@@ -41,8 +41,6 @@ def get_tour_detail(tourid):
 @main.route("/tours/<tourid>/seats", methods=['POST', 'GET'])
 def get_bus_layout(tourid):
     # UPDATE DB
-    customerid = f"C{database.get_next_customer_id()}"
-
     if request.method == 'POST':
         telephone = request.form.get('telephone')
         email = request.form.get('email')
@@ -50,7 +48,6 @@ def get_bus_layout(tourid):
         is_vip = request.form.get('status').split(',')
 
         database.create_tickets(tourid, telephone, email, seats, is_vip)
-        customerid = database.get_customer_id(tourid, telephone, email)
 
     tours = database.convert_utc()
     layout = database.get_bus_layout(tourid)
@@ -62,7 +59,7 @@ def get_bus_layout(tourid):
     return render_template('book_seats.html',
                             layout=layout,
                             tour=tour, 
-                            customerid=customerid)
+                            customerid=f"C{database.get_next_customer_id()}")
 
 
 @main.route("/tours/search", methods=['POST', 'GET'])
