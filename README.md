@@ -98,7 +98,7 @@ Nhấn `Flush socket pools`
 </p>
 
 <p align='center'>
-  <img align='center' src='readme-resources/get_customer_id.gif' width='750'/>
+  <img align='center' src='readme-resources/get_customer_id.png' width='750'/>
 </p>
 
 * Reservations:
@@ -113,7 +113,7 @@ Nhấn `Flush socket pools`
     * Vé sẽ bị xoá bỏ, chỗ ngồi trở về trạng thái `Available`
 
  <p align='center'>
-  <img align='center' src='readme-resources/find_reservations.gif' width='750'/>
+  <img align='center' src='readme-resources/find_reservations.png' width='750'/>
 </p>
 
 * Lưu ý:
