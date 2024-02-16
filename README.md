@@ -68,6 +68,10 @@ Nhấn `Flush socket pools`
   * Không có gì, chỉ dùng để định nghĩa đường dẫn `/`
   * Dùng `header` để di chuyển qua [Tours] hoặc [Reservations]
  
+ <p align='center'>
+  <img align='center' src='readme-resources/homepage.png' width='750'/>
+</p>
+ 
 * Tours:
   * Dùng để liệt kê tất cả các chuyến đi (tours)
   * Có thể trực tiếp di chuyển qua:
@@ -75,15 +79,28 @@ Nhấn `Flush socket pools`
     * [More] để xem thông tin chi tiết về chuyến đi này
   * Có thể sử dụng thanh tìm kiếm để tìm chuyến đi (tìm theo tên)
  
+<p align='center'>
+  <img align='center' src='readme-resources/all_tours.gif' width='750'/>
+</p>
+ 
 * Bookings: [Book_now]
+  * Lưu ý: Nếu không điền đủ email + sđt, hoặc không chọn ghế nào thì không thể đặt vé. Sẽ có thông báo hiển thị.
   * Sau khi chọn ghế và đặt vé:
     * Người dùng sẽ được cấp mã người dùng.
     * Vé sẽ được coi là `Processing`: đã đặt và đang chờ xác nhận
+   
+<p align='center'>
+  <img align='center' src='readme-resources/bus_layout.gif' width='750'/>
+</p>
+
+<p align='center'>
+  <img align='center' src='readme-resources/pick_seats.gif' width='650'/>
+</p>
 
 * Reservations:
-  *  Dùng để liệt kê tất cả các vé xe đã đặt bởi 1 người dùng
-  *  Cần phải sử dụng thanh tìm kiếm để tìm những vé xe đã đặt (tìm theo mã người dùng được cấp)
-  *  Sau khi tìm kiếm vé bằng mã người dùng
+  * Dùng để liệt kê tất cả các vé xe đã đặt bởi 1 người dùng
+  * Cần phải sử dụng thanh tìm kiếm để tìm những vé xe đã đặt (tìm theo mã người dùng được cấp)
+  * Sau khi tìm kiếm vé bằng mã người dùng
     * Người dùng có thể chọn `Cancel` vé hoặc `Confirm` vé.
 
   * Nếu người dùng xác nhận vé bằng `Confirm`:
@@ -91,9 +108,12 @@ Nhấn `Flush socket pools`
   * Nếu người dùng huỷ vé bằng `Cancel`:
     * Vé sẽ bị xoá bỏ, chỗ ngồi trở về trạng thái `Available`
 
+ <p align='center'>
+  <img align='center' src='readme-resources/find_reservations.gif' width='750'/>
+</p>
+
 * Lưu ý:
   * Mã người dùng:
     * Người dùng được coi là người dùng mới (được cấp mã mới) khi có (email, số điện thoại) độc nhất
  
   
-
