@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-from datetime import datetime
 import database
+import json
 
 main = Blueprint("main", __name__)
 
@@ -52,6 +52,7 @@ def get_bus_layout(tourid):
     tours = database.convert_utc()
     layout = database.get_bus_layout(tourid)
     tour = database.find_tour(tours, tourid)
+    customers = database.get_customers()
 
     if tour is None:
         return redirect(url_for('main.list_tours'))
@@ -59,7 +60,8 @@ def get_bus_layout(tourid):
     return render_template('book_seats.html',
                             layout=layout,
                             tour=tour, 
-                            customerid=f"C{database.get_next_customer_id()}")
+                            customerid=f"C{database.get_next_customer_id()}",
+                            customers=json.dumps(customers))
 
 
 @main.route("/tours/search", methods=['POST', 'GET'])

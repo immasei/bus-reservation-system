@@ -451,3 +451,13 @@ def confirm_ticket(customer_id, tour_id, ticket_id):
     updated_tickets = search_tickets_by_customer_id(customer_id)
 
     return updated_tickets
+
+def get_customers():
+    tours = read_json(tour_file).get('tours', [])
+
+    customers = []
+
+    for tour in tours:
+        customers.extend(tour.get('customers', []))
+    
+    return customers

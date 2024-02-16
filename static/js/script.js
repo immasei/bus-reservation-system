@@ -1,10 +1,11 @@
 document.getElementById("bookButton").addEventListener("click", function(event) {
-    // prevent the default form submission behavior
+    // prevent default form submission behavior
     event.preventDefault();
 
     var telephone = document.querySelector("input[name='search']").value.trim();
     var email = document.querySelector("input[name='email']").value.trim();
     
+    // booked unsuccessful: missing details
     if (telephone === "" || email === "") {
         alert("Please fill in both telephone and email.");
     } else {
@@ -13,9 +14,12 @@ document.getElementById("bookButton").addEventListener("click", function(event) 
         var seatsStatus = [];
         var seats = document.querySelectorAll(".seat input[type='checkbox']:checked");
         
+        //booking unsuccessful: no seats checked
         if (seats.length === 0) {
             alert("You haven't selected any seat.");
         } else {
+            // get all seats checked in bookedSeats
+            // get all seats status (vip or not) in seatsStatus
             seats.forEach(function(seat) {
                 bookedSeats.push(seat.id);
 
@@ -25,6 +29,20 @@ document.getElementById("bookButton").addEventListener("click", function(event) 
                     seatsStatus.push(false);
                 }
                 
+            });
+
+            // get list of all customers from all tours
+            var customers = JSON.parse(document.getElementById("hiddenCustomers").value);
+
+            var customerID = null;
+
+            customers.forEach(customer => {
+                // matching phone & email
+                if (customer.tel === telephone && customer.email === email) {
+                    customerID = customer.id;
+                    // returning customer
+                    alert("Booked seats: " + bookedSeats.join(", ") + ".\nYour Customer ID is " + customerID +".\nPlease go to Reservations to confirm your booking.");
+                }
             });
             
             // set values of hidden fields
@@ -36,8 +54,12 @@ document.getElementById("bookButton").addEventListener("click", function(event) 
             // submit form
             document.getElementById("bookingForm").submit();
 
-            var customerid = document.getElementById("hiddenCustomerId").value;
-            alert("Booked seats: " + bookedSeats.join(", ") + ".\nYour Customer ID is " + customerid +".\nPlease go to Reservations to confirm your booking.");
+            // new customers
+            if (customerID === null) {
+                // receive get_next_customer_id from database.py
+                customerID = document.getElementById("hiddenCustomerId").value;
+                alert("Booked seats: " + bookedSeats.join(", ") + ".\nYour Customer ID is " + customerID +".\nPlease go to Reservations to confirm your booking.");
+            }
         }
     }
 });
