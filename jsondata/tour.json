@@ -126,14 +126,7 @@
                             "id": "TK7",
                             "booking_date": "2024-02-16T04:42Z",
                             "seat_id": "B9",
-                            "confirmed": false,
-                            "price": 20000
-                        },
-                        {
-                            "id": "TK8",
-                            "booking_date": "2024-02-16T04:42Z",
-                            "seat_id": "A8",
-                            "confirmed": false,
+                            "confirmed": true,
                             "price": 20000
                         }
                     ]
