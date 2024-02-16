@@ -1,0 +1,145 @@
+{
+  "tours": [
+    {
+      "id": "T1",
+      "name": "Saigon Tour",
+      "duration": "2 hours",
+      "employees_id": ["E1", "E2"],
+      "bus_id": "B1",
+      "price": {"vip": 20000, "no-vip": 19000},
+      "routes": [
+        {
+          "stop_id": "S1",
+          "name": "Stop 1",
+          "location": [10.810583, 106.709145],
+          "departure_time": "2022-12-29T13:00Z"
+        },
+        {
+          "stop_id": "S2",
+          "name": "Stop 2",
+          "location": [10.810583, 106.709145],
+          "arrival_time": "2022-12-29T13:15Z",
+          "departure_time": "2022-12-29T13:45Z"
+        },
+        {
+          "stop_id": "S3",
+          "name": "Stop 3",
+          "location": [10.810583, 106.709145],
+          "arrival_time": "2022-12-29T14:00Z",
+          "departure_time": "2022-12-29T14:30Z"
+        },
+        {
+          "stop_id": "S1",
+          "name": "Stop 1",
+          "location": [10.810583, 106.709145],
+          "arrival_time": "2022-12-29T15:00Z"
+        }
+      ],
+      "customers": [
+        {
+          "id": "C1",
+          "tel": "0123",
+          "email": "a@gmail.com",
+          "tickets": [
+            {
+              "id": "TK1",
+              "booking_date": "2022-11-29T13:45Z",
+              "seat_id": "A1",
+              "price": 19000
+            }
+          ]
+        },
+        {
+          "id": "C2",
+          "tel": "0124",
+          "email": "b@gmail.com",
+          "tickets": [
+            {
+              "id": "TK2",
+              "booking_date": "2022-11-29T13:52Z",
+              "seat_id": "A2",
+              "price": 20000
+            },
+            {
+              "id": "TK3",
+              "booking_date": "2022-11-29T13:55Z",
+              "seat_id": "A5",
+              "price": 19000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "Hanoi Tour",
+      "duration": "3 hours",
+      "employees_id": ["E1", "E2"],
+      "bus_id": "B2",
+      "price": {"vip": 20000, "no-vip": 19000},
+      "routes": [
+        {
+          "stop_id": "S1",
+          "name": "Stop 1",
+          "location": [10.810583, 106.709145],
+          "departure_time": "2022-12-29T13:15Z"
+        },
+        {
+          "stop_id": "S2",
+          "name": "Stop 2",
+          "location": [10.810583, 106.709145],
+          "arrival_time": "2022-12-29T13:15Z",
+          "departure_time": "2022-12-29T13:45Z"
+        },
+        {
+          "stop_id": "S3",
+          "name": "Stop 3",
+          "location": [10.810583, 106.709145],
+          "arrival_time": "2022-12-29T14:00Z",
+          "departure_time": "2022-12-29T14:30Z"
+        }
+      ],
+      "customers": [
+        {
+          "id": "C1",
+          "tel": "0123",
+          "email": "a@gmail.com",
+          "tickets": [
+            {
+              "id": "TK1",
+              "booking_date": "2022-11-29T13:45Z",
+              "seat_id": "A1",
+              "price": 19000
+            }
+          ]
+        },
+        {
+          "id": "C3",
+          "tel": "0124",
+          "email": "b@gmail.com",
+          "tickets": [
+            {
+              "id": "TK2",
+              "booking_date": "2022-11-29T13:52Z",
+              "seat_id": "A2",
+              "price": 19000
+            },
+            {
+              "id": "TK3",
+              "booking_date": "2022-11-29T13:55Z",
+              "seat_id": "A3",
+              "price": 19000
+            },
+            {
+              "id": "TK4",
+              "booking_date": "2022-11-29T13:57Z",
+              "seat_id": "A4",
+              "price": 19000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+        

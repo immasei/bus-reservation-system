@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/header.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <a href="{{ url_for('main.list_tours') }}">Tours</a>
+            <a href="{{ url_for('main.list_tickets') }}">Reservations</a>
+            <div class="search-container">
+                <form name="searchform" class="Search" method="POST" action="{{ url_for('main.search_tour_by_name') }}">
+                    <input type="text" placeholder="Search Tour" name="searchterm">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+    

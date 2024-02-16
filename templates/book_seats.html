@@ -1,0 +1,91 @@
+{% include 'header_2.html' %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bus_layout.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+
+<!-- Heading -->
+<div class="title">
+    <h2>Bus Layout - {{tour['bus_id']}} - {{tour['name']}}</h2>
+    <p>Pick the seats - Confirm seats by Book</p>
+    <p>Please make sure to fill in your details as well.</p>
+</div>
+
+<br>
+
+<!-- Explain -->
+<ul class="showcase">
+    <li>
+      <div class="seat space"></div>
+      <small>N/A</small>
+    </li>
+    <li>
+        <div class="seat occupied"></div>
+        <small>Occupied</small>
+    </li>
+    <li>
+      <div class="seat selected"></div>
+      <small>Selected</small>
+    </li>
+    <li>
+        <div class="seat selectedvip"></div>
+        <small>VIP</small>
+    </li>
+    <li>
+        <div class="seat unselected"></div>
+        <small>Unselected</small>
+    </li>
+</ul>
+
+<!-- Bus layout -->
+<div>
+    {% for floor in layout%}
+    <div class="title">
+        <h2>Floor {{loop.index}}</h2>
+    </div>
+        <div class="bus">
+            <ol class="floor">
+                {% for row in floor %}
+                    <li class="row row--1">
+                    <ol class="seats" type="A">
+                        {% for seat in row %}
+                            {% if seat['id'] == "" %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{seat['id']}}" />
+                                    <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                </li>
+                            {% elif seat['is_occupied'] == True %}
+                                <li class="seat">
+                                    <input type="checkbox" disabled id="{{seat['id']}}" />
+                                    <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                </li>
+                            {% else %}
+                                {% if seat['is_vip'] == False %}
+                                    <li class="seat">
+                                        <input type="checkbox" id="{{seat['id']}}" />
+                                        <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                    </li>
+                                {% else %}
+                                    <li class="seat yellow-seat">
+                                        <input type="checkbox" id="{{seat['id']}}" />
+                                        <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Hidden form for successful booking -->
+<form id="bookingForm" method="POST" action="{{url_for('main.get_bus_layout', tourid=tour.id)}}">
+    <input type="hidden" name="telephone" id="hiddenTelephone">
+    <input type="hidden" name="email" id="hiddenEmail">
+    <input type="hidden" name="seats" id="hiddenSeats">
+    <input type="hidden" name="status" id="hiddenSeatsStatus">
+</form>
+
+<script src="../static/js/script.js"></script>

@@ -1,0 +1,32 @@
+{% include 'header_1.html' %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+
+<!-- Heading -->
+<div class="title">
+    <h2>List all tours</h2>
+</div>
+
+<!-- Table -->
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Duration</th>
+        <th>Start</th>
+        <th>Available seats</th>
+        <th>Detail</th>
+        <th>Book</th>
+    </tr>
+    {% for tour in tours %}
+        <tr>
+            <td>{{tour['id']}}</td>
+            <td>{{tour['name']}}</td>
+            <td>{{tour['duration']}}</td>
+            <td>{{tour['routes'][0]['departure_time']}}</td>
+            <td>{{ tours_status[tour['id']]['available_seats'] }}/{{ tours_status[tour['id']]['total_seats' ]}}</td>
+            <td><button><a href="{{ url_for('main.get_tour_detail', tourid=tour.id) }}">More</a></button></td>
+            <td><button><a href="{{ url_for('main.get_bus_layout', tourid=tour.id) }}">Book now</a></button></td>
+        </tr>
+    {% endfor %}
+</table>

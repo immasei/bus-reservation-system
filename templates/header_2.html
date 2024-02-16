@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/header.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <!-- Home -->
+            <a href="{{ url_for('main.list_tours') }}">Tours</a>
+            <a href="{{ url_for('main.list_tickets') }}">Reservations</a>
+            <!-- Tel and Email -->
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" id="telephone" placeholder="Your Telephone" name="search">
+                    <input type="text" id="email" placeholder="Your Email" name="email">
+                    <button type="submit" id="bookButton">Book</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+    

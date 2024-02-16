@@ -1,0 +1,95 @@
+{% include 'header_1.html' %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+
+<!-- General -->
+<div class="title">
+    <h2>Tour detail: {{tour['id']}} - {{tour['name']}}</h2>
+</div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Duration</th>
+        <th>Start</th>
+        <th>Available seats</th>
+        <th>Book</th>
+    </tr>
+    <tr>
+        <td>{{tour['id']}}</td>
+        <td>{{tour['name']}}</td>
+        <td>{{tour['duration']}}</td>
+        <td>{{tour['routes'][0]['departure_time']}}</td>
+        <td>{{ tour_status['available_seats'] }}/{{ tour_status['total_seats'] }}</td>
+        <td><button><a href="{{ url_for('main.get_bus_layout', tourid=tour.id) }}">Book now</a></button></td>
+    </tr>  
+</table>
+
+<br>
+<br>
+  
+<!-- Schedule -->
+<div class="sub-title">
+    <h3>Schedule</h3>
+</div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Stop Name</th>
+        <th>Time</th>
+    </tr>
+    {% for schedule in schedules %}
+        <tr>
+            <td>{{schedule['id']}}</td>
+            <td>{{schedule['name']}}</td>
+            <td>{{schedule['time']}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br>
+<br>
+
+<!-- Available seats -->
+<div class="table-container">
+    <div class="sub-title">
+        <h3>Available seats</h3>
+    </div>
+    <table class="side-by-side-table">
+        <tr>
+            <th>Floor</th>
+            <th>Sold</th>
+            <th>Available</th>
+            <th>Total</th>
+        </tr>
+        {% for floor in floors_status %}
+            <tr>
+                <td>{{floor['id']}}</td>
+                <td>{{floor['sold']}}</td>
+                <td>{{floor['available']}}</td>
+                <td>{{floor['sold']+floor['available']}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- Contacts -->
+<div class="table-container">
+    <div class="sub-title">
+        <h3>Contacts</h3>
+    </div>
+    <table class="side-by-side-table">
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Telephone</th>
+        </tr>
+        {% for employee in employees %}
+            <tr>
+                <td>{{employee['name']}}</td>
+                <td>{{employee['role']}}</td>
+                <td>{{employee['tel']}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>

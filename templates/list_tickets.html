@@ -1,0 +1,37 @@
+{% include 'header_3.html' %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+
+<!-- Heading -->
+<div class="title">
+    <h2>All reservations for {{customerid}}</h2>
+    <p>You can cancel your booking here.</p>
+</div>
+
+<!-- Table -->
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tour</th>
+        <th>Bus</th>
+        <th>Seat</th>
+        <th>Type</th>
+        <th>Departure</th>
+        <th>Booking date</th>
+        <th>Price</th>
+        <th>Cancel</th>
+    </tr>
+    {% for ticket in tickets %}
+        <tr>
+            <td>{{ticket['id']}}</td>
+            <td><button><a href="{{ url_for('main.get_tour_detail', tourid=ticket.tourid) }}">{{ticket['tour']}}</a></button></td>
+            <td>{{ticket['bus']}}</td>
+            <td>{{ticket['seat']}}</td>
+            <td>{{ticket['type']}}</td>
+            <td>{{ticket['departure']}}</td>
+            <td>{{ticket['booking_date']}}</td>
+            <td>{{ticket['price']}}</td>
+            <td><button><a href="{{ url_for('main.cancel_ticket', tourid=ticket.tourid, ticketid=ticket.id, customerid=customerid) }}">Cancel</a></button></td>
+        </tr>
+    {% endfor %}
+</table>
