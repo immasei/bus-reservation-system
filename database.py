@@ -299,7 +299,8 @@ def create_tickets(tour_id, customer_tel, customer_email, booked_seats, is_vip):
                 new_ticket = {
                     "id": f'TK{current_id}',
                     "booking_date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
-                    "seat_id": seat
+                    "seat_id": seat, 
+                    "confirmed": False
                 }
                 current_id += 1
 
@@ -375,7 +376,7 @@ def search_tickets_by_customer_id(customer_id):
                     for type in price:
                         if ticket['price'] == price[type]:
                             reservation['type'] = type
-                            
+
                     reservations.append(reservation)
                 break
 
@@ -422,7 +423,6 @@ def confirm_ticket(customer_id, tour_id, ticket_id):
                     for ticket in tickets:
                         print(ticket['id'])
                         if ticket['id'] == ticket_id:
-                            print(123)
                             ticket['confirmed'] = True
     
     tour_data = {"tours": tours}

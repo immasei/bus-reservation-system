@@ -27,7 +27,7 @@ document.getElementById("bookButton").addEventListener("click", function(event) 
                 
             });
     
-            alert("Booked seats: " + bookedSeats.join(", "));
+            alert("Booked seats: " + bookedSeats.join(", ") + ". Please go to Reservations to confirm your booking.");
 
             // set values of hidden fields
             document.getElementById("hiddenTelephone").value = telephone;

@@ -69,7 +69,7 @@ def search_tour_by_name():
                                 tours = tours, 
                                 tours_status=tours_status)
     else:
-        return redirect(url_for('/tours'))
+        return redirect(url_for('main.list_tours'))
 
 @main.route("/reservations")
 def list_tickets():
@@ -87,7 +87,7 @@ def search_tickets_by_customer_id():
                                 tickets=tickets,
                                 customerid=customerid)
     else:
-        return redirect(url_for('/reservations'))
+        return redirect(url_for('main.list_tickets'))
 
 @main.route("/reservations/delete/<customerid>/<tourid>/<ticketid>")
 def cancel_ticket(customerid, tourid, ticketid):
