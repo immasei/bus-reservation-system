@@ -26,7 +26,7 @@
   * Mỗi `trạm dừng` có thể được ghé bởi 0 hoặc nhiều `tuyến đường`.
 
 <p align='center'>
-  <img align='center' src='readme-resources/erm.png' width='450'/>
+  <img align='center' src='readme-resources/erm.png' width='750'/>
 </p>
 
 ## Tổ chức dữ liệu dưới dạng JSON
@@ -94,7 +94,7 @@ Nhấn `Flush socket pools`
 </p>
 
 <p align='center'>
-  <img align='center' src='readme-resources/pick_seats.gif' width='650'/>
+  <img align='center' src='readme-resources/pick_seats.gif' width='750'/>
 </p>
 
 * Reservations:
