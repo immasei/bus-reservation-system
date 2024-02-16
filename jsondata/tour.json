@@ -64,7 +64,7 @@
                             "booking_date": "2022-11-29T13:45Z",
                             "seat_id": "A1",
                             "price": 19000,
-                            "confirmed": true
+                            "confirmed": false
                         }
                     ]
                 },
@@ -91,150 +91,9 @@
                 },
                 {
                     "id": "C4",
-                    "tel": "8766",
-                    "email": "g@gmail.com",
-                    "tickets": [
-                        {
-                            "id": "TK4",
-                            "booking_date": "2024-02-16T02:58Z",
-                            "seat_id": "B3",
-                            "confirmed": false,
-                            "price": 19000
-                        },
-                        {
-                            "id": "TK5",
-                            "booking_date": "2024-02-16T02:58Z",
-                            "seat_id": "B5",
-                            "confirmed": true,
-                            "price": 19000
-                        },
-                        {
-                            "id": "TK6",
-                            "booking_date": "2024-02-16T02:58Z",
-                            "seat_id": "C9",
-                            "confirmed": true,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C5",
-                    "tel": "8765",
-                    "email": "gf@gmail.com",
-                    "tickets": [
-                        {
-                            "id": "TK7",
-                            "booking_date": "2024-02-16T04:42Z",
-                            "seat_id": "B9",
-                            "confirmed": true,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C6",
-                    "tel": "4333",
-                    "email": "bq@gmail.com",
-                    "tickets": [
-                        {
-                            "id": "TK9",
-                            "booking_date": "2024-02-16T04:43Z",
-                            "seat_id": "C4",
-                            "confirmed": false,
-                            "price": 20000
-                        },
-                        {
-                            "id": "TK10",
-                            "booking_date": "2024-02-16T04:43Z",
-                            "seat_id": "C10",
-                            "confirmed": false,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C7",
-                    "tel": "4333",
-                    "email": "bq@gmail.com",
-                    "tickets": [
-                        {
-                            "id": "TK11",
-                            "booking_date": "2024-02-16T04:43Z",
-                            "seat_id": "C4",
-                            "confirmed": false,
-                            "price": 20000
-                        },
-                        {
-                            "id": "TK12",
-                            "booking_date": "2024-02-16T04:43Z",
-                            "seat_id": "C10",
-                            "confirmed": false,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C8",
-                    "tel": "9756",
-                    "email": "bhbh@",
-                    "tickets": [
-                        {
-                            "id": "TK13",
-                            "booking_date": "2024-02-16T04:44Z",
-                            "seat_id": "B6",
-                            "confirmed": false,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C9",
-                    "tel": "2222",
-                    "email": "sdgdg@",
-                    "tickets": [
-                        {
-                            "id": "TK14",
-                            "booking_date": "2024-02-16T04:58Z",
-                            "seat_id": "A9",
-                            "confirmed": true,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C10",
-                    "tel": "5673",
-                    "email": "dfjh@",
-                    "tickets": [
-                        {
-                            "id": "TK15",
-                            "booking_date": "2024-02-16T04:59Z",
-                            "seat_id": "B1",
-                            "confirmed": true,
-                            "price": 19000
-                        },
-                        {
-                            "id": "TK16",
-                            "booking_date": "2024-02-16T04:59Z",
-                            "seat_id": "C13",
-                            "confirmed": false,
-                            "price": 20000
-                        }
-                    ]
-                },
-                {
-                    "id": "C11",
-                    "tel": "12544",
-                    "email": "fyj@",
-                    "tickets": [
-                        {
-                            "id": "TK17",
-                            "booking_date": "2024-02-16T05:01Z",
-                            "seat_id": "A7",
-                            "confirmed": false,
-                            "price": 20000
-                        }
-                    ]
+                    "tel": "4566",
+                    "email": "ff@",
+                    "tickets": []
                 }
             ]
         },
@@ -314,7 +173,7 @@
                             "booking_date": "2022-11-29T13:55Z",
                             "seat_id": "A3",
                             "price": 15000,
-                            "confirmed": true
+                            "confirmed": false
                         },
                         {
                             "id": "TK4",
