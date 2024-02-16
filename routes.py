@@ -52,7 +52,7 @@ def get_bus_layout(tourid):
     tours = database.convert_utc()
     layout = database.get_bus_layout(tourid)
     tour = database.find_tour(tours, tourid)
-    customers = database.get_customers()
+    customers = database.get_all_customers()
 
     if tour is None:
         return redirect(url_for('main.list_tours'))

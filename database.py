@@ -329,14 +329,27 @@ def create_tickets(tour_id, customer_tel, customer_email, booked_seats, is_vip):
                     new_ticket['price'] = vip_price
                 new_tickets.append(new_ticket)
 
-            # returning customer
+            # returning customer (same tour_id)
             found = False
             for customer in customers:
                 if customer['tel'] == customer_tel and customer['email'] == customer_email:
                     customer.get('tickets', []).extend(new_tickets)
                     found = True
+
+            # returning customer (different tour_id)
+            if not found:
+                for customer in get_all_customers():
+                    if customer['tel'] == customer_tel and customer['email'] == customer_email:
+                        returning_customer = {
+                            "id": customer['id'],
+                            "tel": customer_tel,
+                            "email": customer_email,
+                            "tickets": new_tickets
+                        }
+                        tour.get('customers', []).append(returning_customer)
+                        found = True
                 
-            # new customer
+            # total new customer
             if not found:
                 new_customer = {
                     "id": f'C{get_next_customer_id()}',
@@ -452,7 +465,7 @@ def confirm_ticket(customer_id, tour_id, ticket_id):
 
     return updated_tickets
 
-def get_customers():
+def get_all_customers():
     tours = read_json(tour_file).get('tours', [])
 
     customers = []
