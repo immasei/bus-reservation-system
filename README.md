@@ -97,6 +97,10 @@ Nhấn `Flush socket pools`
   <img align='center' src='readme-resources/pick_seats.gif' width='750'/>
 </p>
 
+<p align='center'>
+  <img align='center' src='readme-resources/get_customer_id.gif' width='750'/>
+</p>
+
 * Reservations:
   * Dùng để liệt kê tất cả các vé xe đã đặt bởi 1 người dùng
   * Cần phải sử dụng thanh tìm kiếm để tìm những vé xe đã đặt (tìm theo mã người dùng được cấp)

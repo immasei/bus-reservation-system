@@ -91,9 +91,31 @@
                 },
                 {
                     "id": "C4",
-                    "tel": "4566",
-                    "email": "ff@",
-                    "tickets": []
+                    "tel": "4567",
+                    "email": "ng@",
+                    "tickets": [
+                        {
+                            "id": "TK4",
+                            "booking_date": "2024-02-16T09:35Z",
+                            "seat_id": "B3",
+                            "confirmed": true,
+                            "price": 19000
+                        },
+                        {
+                            "id": "TK5",
+                            "booking_date": "2024-02-16T09:35Z",
+                            "seat_id": "A9",
+                            "confirmed": false,
+                            "price": 20000
+                        },
+                        {
+                            "id": "TK6",
+                            "booking_date": "2024-02-16T09:35Z",
+                            "seat_id": "A11",
+                            "confirmed": false,
+                            "price": 20000
+                        }
+                    ]
                 }
             ]
         },
