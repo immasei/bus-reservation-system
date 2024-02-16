@@ -58,7 +58,8 @@ def get_bus_layout(tourid):
 
     return render_template('book_seats.html',
                             layout=layout,
-                            tour=tour)
+                            tour=tour, 
+                            customerid=database.get_new_customer_id())
 
 @main.route("/tours/search", methods=['POST', 'GET'])
 def search_tour_by_name():

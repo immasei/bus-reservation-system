@@ -26,8 +26,10 @@ document.getElementById("bookButton").addEventListener("click", function(event) 
                 }
                 
             });
-    
-            alert("Booked seats: " + bookedSeats.join(", ") + ". Please go to Reservations to confirm your booking.");
+
+            var customerid = document.getElementById("hiddenCustomerId").value;
+            
+            alert("Booked seats: " + bookedSeats.join(", ") + ".\nYour Customer ID is C" + customerid +".\nPlease go to Reservations to confirm your booking.");
 
             // set values of hidden fields
             document.getElementById("hiddenTelephone").value = telephone;
