@@ -119,10 +119,10 @@
       
   * Sau khi đặt vé thành công:
     
-    * Người dùng sẽ được cấp mã người dùng
+    * Người dùng sẽ được cấp mã KH
     * Người dùng được coi là người dùng mới (được cấp mã mới) khi có (email, số điện thoại) độc nhất
     * Vé sẽ được coi là `Processing`: đã đặt và đang chờ xác nhận
-    * Người dùng có thể tra những vé đã đặt qua `[Reservations]` bằng mã người dùng qua thanh tìm kiếm
+    * Người dùng có thể tra những vé đã đặt qua `[Reservations]` bằng mã KH qua thanh tìm kiếm
    
  
 ```
@@ -150,8 +150,8 @@ Chọn ghế
 
 * `Reservations`:
   * Liệt kê tất cả các vé xe đã đặt bởi 1 người dùng
-  * Cần phải sử dụng thanh tìm kiếm bằng mã người dùng được cấp
-  * Sau khi tìm kiếm vé bằng mã người dùng
+  * Cần phải sử dụng thanh tìm kiếm bằng mã KH được cấp
+  * Sau khi tìm kiếm vé bằng mã KH
     * Người dùng có thể chọn `Cancel` vé hoặc `Confirm` vé.
 
   * Nếu người dùng xác nhận vé bằng `Confirm`:
