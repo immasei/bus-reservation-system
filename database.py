@@ -252,7 +252,7 @@ def get_bus_layout(tour_id):
     
     return floors_layout
 
-def get_new_ticket_id(tour_id):
+def get_next_ticket_id(tour_id):
     """
         ticket id is unique per tour_id (aka bus_id) only
     """
@@ -268,7 +268,7 @@ def get_new_ticket_id(tour_id):
    
     return tickets + 1
 
-def get_new_customer_id():
+def get_next_customer_id():
     """
         customer id is unique across all tours
     """
@@ -280,6 +280,25 @@ def get_new_customer_id():
         customers_id.extend(customer['id'] for customer in customers)
    
     return len(set(customers_id)) + 1
+
+def get_customer_id(tour_id, customer_tel, customer_email):
+    tours = read_json(tour_file).get('tours', [])
+
+    if customer_tel is None or customer_email is None:
+        return f"C{get_next_customer_id()}"
+
+    for tour in tours:
+        if tour['id'] == tour_id:
+            customers = tour.get('customers', [])
+
+            # returning customer
+            for customer in customers:
+                if customer['tel'] == customer_tel and customer['email'] == customer_email:
+                    print(customer['id'])
+                    return customer['id']
+                
+    print(f"C{get_next_customer_id()}")
+    return f"C{get_next_customer_id()}"
 
 def create_tickets(tour_id, customer_tel, customer_email, booked_seats, is_vip):
     tours = read_json(tour_file).get('tours', [])
@@ -294,7 +313,7 @@ def create_tickets(tour_id, customer_tel, customer_email, booked_seats, is_vip):
 
             # create tickets for booked seats
             new_tickets = []
-            current_id = get_new_ticket_id(tour_id)
+            current_id = get_next_ticket_id(tour_id)
             for seat in booked_seats:
                 new_ticket = {
                     "id": f'TK{current_id}',
@@ -316,12 +335,11 @@ def create_tickets(tour_id, customer_tel, customer_email, booked_seats, is_vip):
                 if customer['tel'] == customer_tel and customer['email'] == customer_email:
                     customer.get('tickets', []).extend(new_tickets)
                     found = True
-                break
                 
             # new customer
             if not found:
                 new_customer = {
-                    "id": f'C{get_new_customer_id()}',
+                    "id": f'C{get_next_customer_id()}',
                     "tel": customer_tel,
                     "email": customer_email,
                     "tickets": new_tickets
