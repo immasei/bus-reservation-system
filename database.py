@@ -55,7 +55,7 @@ def get_tour_status(tour_id):
 
     for floor in floors_status:
         available_seats += floor['available']
-        total_seats += floor['sold']+floor['available']
+        total_seats += floor['unavailable']+floor['available']
 
     tour_status['available_seats'] = available_seats
     tour_status['total_seats'] = total_seats
@@ -110,17 +110,31 @@ def get_floors_status(tour_id):
         if tour['id'] == tour_id:
             bus_id = tour['bus_id']
 
+            # get all seats that has been confirmed
+            customers = tour.get('customers', [])
+            confirmed_tickets = []
+            for customer in customers:
+                tickets = customer.get('tickets', [])
+                confirmed_tickets.extend(ticket['seat_id'] for ticket in tickets if ticket['confirmed'])
+
+            # stats
             for bus in buses:
                 if bus['id'] == bus_id:
                     floors = bus.get('floors', [])
+                    
                     for floor in floors:
                         seats = floor.get('seats', [])
-                        sold = [seat['is_occupied'] for seat in seats].count(True)
+
+                        unavailable = [seat['is_occupied'] for seat in seats].count(True)
+                        confirmed = [seat['is_occupied'] for seat in seats if seat['id'] in confirmed_tickets].count(True)
+                        processing = unavailable - confirmed
 
                         floor_status = {}
                         floor_status['id'] = floor['id']
-                        floor_status['sold'] = sold
-                        floor_status['available'] = len(seats) - sold
+                        floor_status['unavailable'] = unavailable   # ve da dat
+                        floor_status['processing'] = processing     # ve dang cho xac nhan 
+                        floor_status['confirmed'] = confirmed       # ve da xac nhan
+                        floor_status['available'] = len(seats) - unavailable
                         floors_status.append(floor_status)
 
                     break
@@ -354,19 +368,20 @@ def search_tickets_by_customer_id(customer_id):
                         "seat": ticket['seat_id'],
                         "departure": routes[0]['departure_time'],
                         "booking_date": ticket['booking_date'],
-                        "price": ticket['price']
+                        "price": ticket['price'],
+                        "confirmed": ticket['confirmed']
                     } 
 
                     for type in price:
                         if ticket['price'] == price[type]:
                             reservation['type'] = type
-
+                            
                     reservations.append(reservation)
                 break
 
     return reservations
 
-def cancel_ticket(tour_id, customer_id, ticket_id):
+def cancel_ticket(customer_id, tour_id, ticket_id):
     tours = read_json(tour_file).get('tours', [])
 
     for tour in tours:
@@ -392,3 +407,29 @@ def cancel_ticket(tour_id, customer_id, ticket_id):
     remaining_tickets = search_tickets_by_customer_id(customer_id)
 
     return remaining_tickets
+
+def confirm_ticket(customer_id, tour_id, ticket_id):
+    tours = read_json(tour_file).get('tours', [])
+
+    for tour in tours:
+        if tour['id'] == tour_id:
+            customers = tour.get('customers', [])
+
+            for customer in customers:
+                if customer['id'] == customer_id:
+                    tickets = customer.get('tickets', [])
+
+                    for ticket in tickets:
+                        print(ticket['id'])
+                        if ticket['id'] == ticket_id:
+                            print(123)
+                            ticket['confirmed'] = True
+    
+    tour_data = {"tours": tours}
+
+    with open(tour_file, 'w') as f:
+        json.dump(tour_data, f, indent=4) 
+
+    updated_tickets = search_tickets_by_customer_id(customer_id)
+
+    return updated_tickets

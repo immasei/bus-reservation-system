@@ -89,10 +89,19 @@ def search_tickets_by_customer_id():
     else:
         return redirect(url_for('/reservations'))
 
-@main.route("/reservations/delete/<tourid>/<customerid>/<ticketid>")
-def cancel_ticket(tourid, customerid, ticketid):
-    database.cancel_ticket(tourid, customerid, ticketid)
-    tickets = database.search_tickets_by_customer_id(customerid)
+@main.route("/reservations/delete/<customerid>/<tourid>/<ticketid>")
+def cancel_ticket(customerid, tourid, ticketid):
+    tickets = database.cancel_ticket(customerid, tourid, ticketid)
+
+    return render_template('list_tickets.html',
+                                tickets=tickets,
+                                customerid=customerid)
+
+@main.route("/reservations/<customerid>/<tourid>/<ticketid>/update")
+def confirm_ticket(customerid, tourid, ticketid):
+    tickets = database.confirm_ticket(customerid, tourid, ticketid)
+
+    print(tickets)
 
     return render_template('list_tickets.html',
                                 tickets=tickets,

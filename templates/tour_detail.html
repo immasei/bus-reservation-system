@@ -58,6 +58,7 @@
     <table class="side-by-side-table">
         <tr>
             <th>Floor</th>
+            <th>Processing</th>
             <th>Sold</th>
             <th>Available</th>
             <th>Total</th>
@@ -65,9 +66,10 @@
         {% for floor in floors_status %}
             <tr>
                 <td>{{floor['id']}}</td>
-                <td>{{floor['sold']}}</td>
+                <td>{{floor['processing']}}</td>
+                <td>{{floor['confirmed']}}</td>
                 <td>{{floor['available']}}</td>
-                <td>{{floor['sold']+floor['available']}}</td>
+                <td>{{floor['unavailable']+floor['available']}}</td>
             </tr>
         {% endfor %}
     </table>

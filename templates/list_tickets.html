@@ -5,7 +5,8 @@
 <!-- Heading -->
 <div class="title">
     <h2>All reservations for {{customerid}}</h2>
-    <p>You can cancel your booking here.</p>
+    <p>You can cancel or confirm your bookings here.</p>
+    <p>You cannot cancelled a confirmation.</p>
 </div>
 
 <!-- Table -->
@@ -19,11 +20,12 @@
         <th>Departure</th>
         <th>Booking date</th>
         <th>Price</th>
+        <th>Confirm</th>
         <th>Cancel</th>
     </tr>
     {% for ticket in tickets %}
         <tr>
-            <td>{{ticket['id']}}</td>
+            <td>{{ticket['tourid']}}-{{ticket['id']}}</td>
             <td><button><a href="{{ url_for('main.get_tour_detail', tourid=ticket.tourid) }}">{{ticket['tour']}}</a></button></td>
             <td>{{ticket['bus']}}</td>
             <td>{{ticket['seat']}}</td>
@@ -31,7 +33,13 @@
             <td>{{ticket['departure']}}</td>
             <td>{{ticket['booking_date']}}</td>
             <td>{{ticket['price']}}</td>
-            <td><button><a href="{{ url_for('main.cancel_ticket', tourid=ticket.tourid, ticketid=ticket.id, customerid=customerid) }}">Cancel</a></button></td>
+            {% if ticket['confirmed'] == false %}
+                <td><button><a href="{{ url_for('main.confirm_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Confirm</a></button></td>
+                <td><button onclick="alert('This would delete ticket {{ticket.id}} from {{ticket.tour}}')"><a href="{{ url_for('main.cancel_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Cancel</a></button></td>
+            {% else %}
+                <td>X</td>
+                <td>X</td>
+            {% endif %}
         </tr>
     {% endfor %}
 </table>

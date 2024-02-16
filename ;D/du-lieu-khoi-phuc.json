@@ -12,27 +12,27 @@
           "stop_id": "S1",
           "name": "Stop 1",
           "location": [10.810583, 106.709145],
-          "departure_time": "2022-12-29T13:00Z"
+          "departure_time": "2024-12-25T13:00Z"
         },
         {
           "stop_id": "S2",
           "name": "Stop 2",
           "location": [10.810583, 106.709145],
-          "arrival_time": "2022-12-29T13:15Z",
-          "departure_time": "2022-12-29T13:45Z"
+          "arrival_time": "2024-12-25T13:15Z",
+          "departure_time": "2024-12-25T13:45Z"
         },
         {
           "stop_id": "S3",
           "name": "Stop 3",
           "location": [10.810583, 106.709145],
-          "arrival_time": "2022-12-29T14:00Z",
-          "departure_time": "2022-12-29T14:30Z"
+          "arrival_time": "2024-12-25T14:00Z",
+          "departure_time": "2024-12-25T14:30Z"
         },
         {
           "stop_id": "S1",
           "name": "Stop 1",
           "location": [10.810583, 106.709145],
-          "arrival_time": "2022-12-29T15:00Z"
+          "arrival_time": "2024-12-25T15:00Z"
         }
       ],
       "customers": [
@@ -45,7 +45,8 @@
               "id": "TK1",
               "booking_date": "2022-11-29T13:45Z",
               "seat_id": "A1",
-              "price": 19000
+              "price": 19000,
+              "confirmed": false
             }
           ]
         },
@@ -58,13 +59,15 @@
               "id": "TK2",
               "booking_date": "2022-11-29T13:52Z",
               "seat_id": "A2",
-              "price": 20000
+              "price": 20000,
+              "confirmed": false
             },
             {
               "id": "TK3",
               "booking_date": "2022-11-29T13:55Z",
               "seat_id": "A5",
-              "price": 19000
+              "price": 19000,
+              "confirmed": false
             }
           ]
         }
@@ -74,29 +77,29 @@
       "id": "T2",
       "name": "Hanoi Tour",
       "duration": "3 hours",
-      "employees_id": ["E1", "E2"],
+      "employees_id": ["E2", "E3"],
       "bus_id": "B2",
-      "price": {"vip": 20000, "no-vip": 19000},
+      "price": {"vip": 19500, "no-vip": 15000},
       "routes": [
         {
           "stop_id": "S1",
           "name": "Stop 1",
           "location": [10.810583, 106.709145],
-          "departure_time": "2022-12-29T13:15Z"
+          "departure_time": "2024-12-29T14:30Z"
         },
         {
           "stop_id": "S2",
           "name": "Stop 2",
           "location": [10.810583, 106.709145],
-          "arrival_time": "2022-12-29T13:15Z",
-          "departure_time": "2022-12-29T13:45Z"
+          "arrival_time": "2024-12-29T14:45Z",
+          "departure_time": "2024-12-29T16:30Z"
         },
         {
           "stop_id": "S3",
           "name": "Stop 3",
           "location": [10.810583, 106.709145],
-          "arrival_time": "2022-12-29T14:00Z",
-          "departure_time": "2022-12-29T14:30Z"
+          "arrival_time": "2024-12-29T16:45Z",
+          "departure_time": "2024-12-29T17:30Z"
         }
       ],
       "customers": [
@@ -109,7 +112,8 @@
               "id": "TK1",
               "booking_date": "2022-11-29T13:45Z",
               "seat_id": "A1",
-              "price": 19000
+              "price": 15000,
+              "confirmed": false
             }
           ]
         },
@@ -122,19 +126,22 @@
               "id": "TK2",
               "booking_date": "2022-11-29T13:52Z",
               "seat_id": "A2",
-              "price": 19000
+              "price": 19500,
+              "confirmed": false
             },
             {
               "id": "TK3",
               "booking_date": "2022-11-29T13:55Z",
               "seat_id": "A3",
-              "price": 19000
+              "price": 15000,
+              "confirmed": false
             },
             {
               "id": "TK4",
               "booking_date": "2022-11-29T13:57Z",
               "seat_id": "A4",
-              "price": 19000
+              "price": 19500,
+              "confirmed": false
             }
           ]
         }
@@ -142,4 +149,3 @@
     }
   ]
 }
-        
