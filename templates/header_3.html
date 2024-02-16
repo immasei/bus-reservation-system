@@ -5,8 +5,10 @@
     </head>
     <body>
         <div class="header">
+            <!-- Links -->
             <a href="{{ url_for('main.list_tours') }}">Tours</a>
             <a href="{{ url_for('main.list_tickets') }}">Reservations</a>
+            <!-- Search -->
             <div class="search-container">
                 <form name="searchform" class="Search" method="POST" action="{{ url_for('main.search_tickets_by_customer_id') }}">
                     <input type="text" placeholder="Your Customer ID" name="searchterm">

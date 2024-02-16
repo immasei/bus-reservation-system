@@ -34,8 +34,8 @@
             <td>{{ticket['booking_date']}}</td>
             <td>{{ticket['price']}}</td>
             {% if ticket['confirmed'] == false %}
-                <td><button onclick="alert('Demo mất tiền: Bạn đã trả {{ticket.price}}')"><a href="{{ url_for('main.confirm_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Confirm</a></button></td>
-                <td><button onclick="alert('This would delete ticket {{ticket.id}} from {{ticket.tour}}')"><a href="{{ url_for('main.cancel_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Cancel</a></button></td>
+                <td><button onclick="alert('Demo mất tiền: You have been charged {{ticket.price}}.')"><a href="{{ url_for('main.confirm_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Confirm</a></button></td>
+                <td><button onclick="alert('This would delete ticket {{ticket.id}} from {{ticket.tour}}.')"><a href="{{ url_for('main.cancel_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Cancel</a></button></td>
             {% else %}
                 <td>X</td>
                 <td>X</td>

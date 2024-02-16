@@ -114,13 +114,6 @@
                             "seat_id": "C9",
                             "confirmed": true,
                             "price": 20000
-                        },
-                        {
-                            "id": "TK7",
-                            "booking_date": "2024-02-16T02:58Z",
-                            "seat_id": "B8",
-                            "confirmed": false,
-                            "price": 20000
                         }
                     ]
                 }
@@ -202,7 +195,7 @@
                             "booking_date": "2022-11-29T13:55Z",
                             "seat_id": "A3",
                             "price": 15000,
-                            "confirmed": false
+                            "confirmed": true
                         },
                         {
                             "id": "TK4",
