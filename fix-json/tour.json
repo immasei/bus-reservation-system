@@ -1,0 +1,74 @@
+{
+	"tour_layouts": [
+		{
+			"tour_id": "T1",
+			"name": "Saigon Tour",
+			"duration": "2 hours",
+			"routes": [
+				{
+					"stop_id": "S1",
+					"name": "Stop 1",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				},
+				{
+					"stop_id": "S2",
+					"name": "Stop 2",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				},
+				{
+					"stop_id": "S3",
+					"name": "Stop 3",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				},
+				{
+					"stop_id": "S1",
+					"name": "Stop 1",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				}
+			]
+		},
+		{
+			"tour_id": "T2",
+			"name": "Hanoi Tour",
+			"duration": "3 hours",
+			"routes": [
+				{
+					"stop_id": "S1",
+					"name": "Stop 1",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				},
+				{
+					"stop_id": "S2",
+					"name": "Stop 2",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				},
+				{
+					"stop_id": "S3",
+					"name": "Stop 3",
+					"location": [
+						10.810583,
+						106.709145
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"tickets": [
+		{
+			"date": "2024-12-25",
+			"slots": [
+				{
+					"slot": "9:00",
+					"tours": [
+						{
+							"tour_id": "T1",
+							"bus_id": "B1",
+							"ticket": [
+								{
+									"customer": "C1",
+									"ticket_id": "TK1",
+									"booking_date": "2022-11-29T13:52Z",
+									"seat_id": "111",
+									"confirmed": false
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

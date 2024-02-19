@@ -1,0 +1,121 @@
+{
+	"bus_layouts": [
+		{
+			"layout_id": "L1",
+			"floors": [
+				{
+					"id": 1,
+					"seats": [
+						{"id": "111", "column": 1, "row": 1, "is_vip": false},
+						{"id": "113", "column": 3, "row": 1, "is_vip": false},
+						{"id": "115", "column": 5, "row": 1, "is_vip": false},
+
+						{"id": "121", "column": 1, "row": 2, "is_vip": false},
+						{"id": "123", "column": 3, "row": 2, "is_vip": false},
+						{"id": "125", "column": 5, "row": 2, "is_vip": false},
+
+						{"id": "131", "column": 1, "row": 3, "is_vip": false},
+						{"id": "133", "column": 3, "row": 3, "is_vip": false},
+						{"id": "135", "column": 5, "row": 3, "is_vip": false},
+
+						{"id": "141", "column": 1, "row": 4, "is_vip": true},
+						{"id": "143", "column": 3, "row": 4, "is_vip": true},
+						{"id": "145", "column": 5, "row": 4, "is_vip": true},
+
+						{"id": "151", "column": 1, "row": 5, "is_vip": true},
+						{"id": "153", "column": 3, "row": 5, "is_vip": true},
+						{"id": "155", "column": 5, "row": 5, "is_vip": true},
+
+						{"id": "161", "column": 1, "row": 6, "is_vip": true},
+						{"id": "162", "column": 2, "row": 6, "is_vip": true},
+						{"id": "163", "column": 3, "row": 6, "is_vip": true},
+						{"id": "164", "column": 4, "row": 6, "is_vip": true},
+						{"id": "165", "column": 5, "row": 6, "is_vip": true}
+					]
+				},
+				{
+					"id": 2,
+					"seats": [
+						{"id": "211", "column": 1, "row": 1, "is_vip": true},
+						{"id": "213", "column": 3, "row": 1, "is_vip": true},
+						{"id": "215", "column": 5, "row": 1, "is_vip": true},
+
+						{"id": "221", "column": 1, "row": 2, "is_vip": true},
+						{"id": "223", "column": 3, "row": 2, "is_vip": true},
+						{"id": "225", "column": 5, "row": 2, "is_vip": true},
+
+						{"id": "231", "column": 1, "row": 3, "is_vip": true},
+						{"id": "233", "column": 3, "row": 3, "is_vip": true},
+						{"id": "235", "column": 5, "row": 3, "is_vip": true},
+
+						{"id": "241", "column": 1, "row": 4, "is_vip": true},
+						{"id": "243", "column": 3, "row": 4, "is_vip": true},
+						{"id": "245", "column": 5, "row": 4, "is_vip": true},
+
+						{"id": "251", "column": 1, "row": 5, "is_vip": true},
+						{"id": "253", "column": 3, "row": 5, "is_vip": true},
+						{"id": "255", "column": 5, "row": 5, "is_vip": true},
+
+						{"id": "261", "column": 1, "row": 6, "is_vip": true},
+						{"id": "262", "column": 2, "row": 6, "is_vip": true},
+						{"id": "263", "column": 3, "row": 6, "is_vip": true},
+						{"id": "264", "column": 4, "row": 6, "is_vip": true},
+						{"id": "265", "column": 5, "row": 6, "is_vip": true}
+					]
+				}
+			]
+		},
+		{
+			"layout_id": "L2",
+			"floors": [
+				{
+					"id": 1,
+					"seats": [
+						{"id": "111", "column": 1, "row": 1, "is_vip": false},
+						{"id": "113", "column": 3, "row": 1, "is_vip": false},
+
+						{"id": "121", "column": 1, "row": 2, "is_vip": false},
+						{"id": "123", "column": 3, "row": 2, "is_vip": false},
+
+						{"id": "131", "column": 1, "row": 3, "is_vip": false},
+						{"id": "133", "column": 3, "row": 3, "is_vip": false},
+
+						{"id": "141", "column": 1, "row": 4, "is_vip": true},
+						{"id": "143", "column": 3, "row": 4, "is_vip": true},
+
+						{"id": "151", "column": 1, "row": 5, "is_vip": true},
+						{"id": "153", "column": 3, "row": 5, "is_vip": true},
+
+						{"id": "161", "column": 1, "row": 6, "is_vip": true},
+						{"id": "162", "column": 2, "row": 6, "is_vip": true},
+						{"id": "163", "column": 3, "row": 6, "is_vip": true}
+					]
+				},
+				{
+					"id": 2,
+					"seats": [
+						{"id": "211", "column": 1, "row": 1, "is_vip": true},
+						{"id": "213", "column": 3, "row": 1, "is_vip": true},
+
+						{"id": "221", "column": 1, "row": 2, "is_vip": true},
+						{"id": "223", "column": 3, "row": 2, "is_vip": true},
+
+						{"id": "231", "column": 1, "row": 3, "is_vip": true},
+						{"id": "233", "column": 3, "row": 3, "is_vip": true},
+
+						{"id": "241", "column": 1, "row": 4, "is_vip": true},
+						{"id": "243", "column": 3, "row": 4, "is_vip": true},
+
+						{"id": "251", "column": 1, "row": 5, "is_vip": true},
+						{"id": "253", "column": 3, "row": 5, "is_vip": true},
+
+						{"id": "261", "column": 1, "row": 6, "is_vip": true},
+						{"id": "262", "column": 2, "row": 6, "is_vip": true},
+						{"id": "263", "column": 3, "row": 6, "is_vip": true}
+					]
+				}
+			]
+		}
+	]
+}
+  
