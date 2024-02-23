@@ -1,0 +1,172 @@
+{
+	"schedules": [
+		{
+			"date": "2024-12-25",
+			"slots": [
+				{
+					"slot": "9:00",
+					"tours": [
+						{
+							"id": "T1",
+							"buses": [
+								{
+									"id": "B3",
+									"routes": [
+										{
+											"departure_stop": "S1",
+											"arrival_stop": "S2",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S2",
+											"arrival_stop": "S3",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S3",
+											"arrival_stop": "S1",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										}
+									]
+								},
+								{
+									"id": "B2",
+									"routes": [
+										{
+											"departure_stop": "S1",
+											"arrival_stop": "S2",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S2",
+											"arrival_stop": "S3",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S3",
+											"arrival_stop": "S1",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"slot": "7:00",
+					"tours": [
+						{
+							"id": "T1",
+							"buses": [
+								{
+									"id": "B1",
+									"routes": [
+										{
+											"departure_stop": "S1",
+											"arrival_stop": "S2",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S2",
+											"arrival_stop": "S3",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S3",
+											"arrival_stop": "S1",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"date": "2024-12-26",
+			"slots": [
+				{
+					"slot": "10:00",
+					"tours": [
+						{
+							"id": "T1",
+							"buses": [
+								{
+									"id": "B1",
+									"routes": [
+										{
+											"departure_stop": "S1",
+											"arrival_stop": "S2",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S2",
+											"arrival_stop": "S3",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										},
+										{
+											"departure_stop": "S3",
+											"arrival_stop": "S1",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E1", "E2"]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "T2",
+							"buses": [
+								{
+									"id": "B2",
+									"routes": [
+										{
+											"departure_stop": "S1",
+											"arrival_stop": "S2",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E2", "E3"]
+										},
+										{
+											"departure_stop": "S2",
+											"arrival_stop": "S3",
+											"arrival_time": "2024-12-25T14:00Z",
+											"departure_time": "2024-12-25T14:30Z",
+											"employees_id": ["E2", "E3"]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

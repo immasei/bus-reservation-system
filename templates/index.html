@@ -1,7 +1,32 @@
 {% include 'header_1.html' %}
 
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/login.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+<br>
+<br>
 
 <div class="title">
     <h1>Homepage</h1>
+</div>
+
+<!-- flask can only read from static -->
+<div class="login">
+    <div class="login-container">  
+        <div class="imgcontainer">
+            <img src="{{ url_for('static', filename='img/ava.png') }}" alt="Avatar" class="avatar">
+        </div>
+        <br>
+        <form name="loginform" class="Login" method="POST" action="{{ url_for('main.login') }}"> 
+            <div class="input-group">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username">
+            </div>
+            <div class="input-group">
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password">
+            </div>   
+            <br>
+            <button type="submit" class="button">Login</button>
+        </form>
+    </div>
 </div>

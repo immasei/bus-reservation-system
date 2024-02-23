@@ -2,18 +2,6 @@
     box-sizing: border-box;
 }
 
-/* body { */
-  /* background-color: #242333; */
-  /* color: #fff; */
-  /* display: flex; */
-  /* flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-  /* height: 50vh; */
-  /* font-family: "Lato", sans-serif;
-  margin: 0; */
-/* } */
-
 html {
     font-size: 14px;
 }
@@ -22,36 +10,6 @@ html {
     margin: 50px auto;
     max-width: 300px;
 }
-
-/* .exit {
-    position: relative;
-    height: 50px;
-} */
-/* .exit:before, .exit:after {
-    content: "EXIT";
-    font-size: 14px;
-    line-height: 18px;
-    padding: 0px 2px;
-    font-family: "Arial Narrow", Arial, sans-serif;
-    display: block;
-    position: absolute;
-    background: green;
-    color: white;
-    top: 50%;
-    transform: translate(0, -50%);
-} */
-/* .exit:before {
-    left: 0;
-}
-
-.exit:after {
-    right: 0;
-} */
-
-/* .fuselage {
-    border-right: 5px solid #d8d8d8;
-    border-left: 5px solid #d8d8d8;
-} */
 
 ol {
     list-style: none;
@@ -141,11 +99,11 @@ ol {
 .seat label {
     display: block;
     position: relative;
-    width: 100%;
+    width: 35px;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
-    line-height: 1.5rem;
+    line-height: 1.8rem;
     padding: 4px 0;
     background: #dddddd; 
     border-radius: 5px;

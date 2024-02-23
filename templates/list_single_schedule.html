@@ -1,0 +1,106 @@
+{% include 'header_1.html' %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+
+<!-- Heading -->
+<br>
+<div class="title">
+    <h2>{{schedule['id']}} - {{schedule['name']}} ({{schedule['slot']}} {{schedule['date']}})</h2>
+</div>
+<br>
+
+<!-- SCHEDULES -->
+<table class="tab1">
+    <tr>
+        <th>Date</th>
+        <th>Slot</th>
+        <th>Tour ID</th>
+        <th>Tour Name</th>
+        <th>Duration</th>
+        <th>Bus ID</th>
+        <th>Available</th>
+        <th>Book</th>
+    </tr>
+    <tbody id="tab1">
+        <tr>
+            <td>{{schedule['date']}}</td>
+            <td>{{schedule['slot']}}</td>
+            <td>{{schedule['id']}}</td>
+            <td>{{schedule['name']}}</td>
+            <td>{{schedule['duration']}}</td>
+            <td>{{schedule['bus_id']}}</td>
+            <td>{{ schedule['status']['total_available_seats'] }}/{{ schedule['status']['total_seats'] }}</td>
+            <td><button><a href="{{ url_for('main.book_seats', tourid=schedule.id,  datetime=schedule.date ~ 'T' ~ schedule.slot, busid=schedule.bus_id) }}">Book now</a></button></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+
+<!-- Available seats -->
+<div class="table-container">
+    <div class="sub-title">
+        <h4>Available seats</h4>
+    </div>
+    <table class="side-by-side-table">
+        <tr>
+            <th>Floor</th>
+            <th>Processing</th>
+            <th>Sold</th>
+            <th>Available</th>
+            <th>Total</th>
+        </tr>
+        {% for floor in schedule['layout'] %}
+            <tr>
+                <td>{{floor['id']}}</td>
+                <td>{{floor['processing_seats']}}</td>
+                <td>{{floor['confirmed_seats']}}</td>
+                <td>{{floor['available_seats']}}</td>
+                <td>{{ floor['processing_seats']+floor['confirmed_seats']+floor['available_seats'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- Contacts -->
+<div class="table-container">
+    <div class="sub-title">
+        <h4>Contacts</h4>
+    </div>
+    <table class="side-by-side-table">
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Telephone</th>
+        </tr>
+        <tbody id="tab3">
+            {% for employee in employees %}
+                <tr>
+                    <td>{{employee['name']}}</td>
+                    <td>{{employee['role']}}</td>
+                    <td>{{employee['tel']}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchtour").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tab1 tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    // Highlight row when hovering
+    $("#tab1 tr").hover(function() {
+        var index = $(this).index();
+        $("#tab1 tr").eq(index).addClass("highlight2");
+    }, function() {
+        $("#tab1 tr").removeClass("highlight2");
+    });
+</script>

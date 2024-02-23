@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh; 
+}
+
+.login-container {
+  width: 30%;
+  text-align: center;
+}
+
+.login input[type=text], 
+.login input[type=password] {
+  width: 76%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  line-height: 25px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.login button {
+  background-color: #293133;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  width: 99%;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.login button:hover {
+  /* opacity: 0.8; */
+  background: 		#e5d075;
+  color: black;
+}
+
+.input-group {
+  align-items: center;
+}
+
+.input-group label {
+  text-align: center;
+  margin-right: 10px; /* Adjust as needed */
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 12px 0 0px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 30%;
+  border-radius: 40%;
+}

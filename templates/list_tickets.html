@@ -3,10 +3,23 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
 
 <!-- Heading -->
+<br>
 <div class="title">
     <h2>All reservations for {{customerid}}</h2>
+    <br>
     <p>You can cancel or confirm your bookings here.</p>
-    <p>You cannot cancelled a confirmation.</p>
+    <p>You cannot cancel a confirmation.</p>
+    <p>When you hover over a row, other tickets that occur on the same date will also be highlighted in blue.</p>
+</div>
+
+<!-- Explain -->
+<div class="container">
+    <ul class="showcase">
+        <li>
+            <div class="row date"></div>
+            <small>Cursor</small>
+        </li>
+    </ul>
 </div>
 
 <!-- Table -->
@@ -14,32 +27,52 @@
     <tr>
         <th>ID</th>
         <th>Tour</th>
+        <th>Departure</th>
         <th>Bus</th>
         <th>Seat</th>
         <th>Type</th>
-        <th>Departure</th>
         <th>Booking date</th>
         <th>Price</th>
         <th>Confirm</th>
         <th>Cancel</th>
     </tr>
+    <tbody id="tab2">
     {% for ticket in tickets %}
         <tr>
-            <td>{{ticket['tourid']}}-{{ticket['id']}}</td>
-            <td><button><a href="{{ url_for('main.get_tour_detail', tourid=ticket.tourid) }}">{{ticket['tour']}}</a></button></td>
-            <td>{{ticket['bus']}}</td>
-            <td>{{ticket['seat']}}</td>
+            <td>{{ticket['id']}}</td>
+            <td><button><a href="{{ url_for('main.list_single_tour', tourid=ticket.tour_id) }}">{{ticket['tour_id']}}-{{ticket['tour_name']}}</a></button></td>
+            <td><button><a href="{{ url_for('main.list_single_schedule', tourid=ticket.tour_id,  datetime=ticket.date ~ 'T' ~ ticket.slot, busid=ticket.bus_id) }}">{{ticket['date']}} {{ticket['slot']}}</a></button></td>
+            <td>{{ticket['bus_id']}}</td>
+            <td>{{ticket['seat_id']}}</td>
             <td>{{ticket['type']}}</td>
-            <td>{{ticket['departure']}}</td>
             <td>{{ticket['booking_date']}}</td>
             <td>{{ticket['price']}}</td>
             {% if ticket['confirmed'] == false %}
-                <td><button onclick="alert('Demo mất tiền: You have been charged {{ticket.price}}.')"><a href="{{ url_for('main.confirm_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Confirm</a></button></td>
-                <td><button onclick="alert('This would delete ticket {{ticket.id}} from {{ticket.tour}}.')"><a href="{{ url_for('main.cancel_ticket', customerid=customerid, tourid=ticket.tourid, ticketid=ticket.id) }}">Cancel</a></button></td>
+                <td><button onclick="addFlashMessage('success', 'Demo mất tiền: You have been charged {{ticket.price}}.')"><a href="{{ url_for('main.confirm_ticket', customerid=customerid, ticketid=ticket.id) }}">Confirm</a></button></td>
+                <td><button onclick="addFlashMessage('danger', 'This would delete ticket {{ticket.id}}.')"><a href="{{ url_for('main.cancel_ticket', customerid=customerid, ticketid=ticket.id) }}">Cancel</a></button></td>
             {% else %}
                 <td>X</td>
                 <td>X</td>
             {% endif %}
         </tr>
     {% endfor %}
+    </tbody>
 </table>
+
+<script>
+    $(document).ready(function () {
+        // Highlight rows with the same date when hovering
+        $("#tab2 tr").hover(function() {
+            var date = $(this).find("td:nth-child(3)").text();
+            $("#tab2 tr").each(function() {
+                if ($(this).find("td:nth-child(3)").text() === date) {
+                    $(this).addClass("highlight2");
+                }
+            });
+        }, function() {
+            $("#tab2 tr").removeClass("highlight2");
+        });
+    });
+</script>
+
+<script src="/static/js/script.js"></script>

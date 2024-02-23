@@ -1,0 +1,113 @@
+{% include 'header_1.html' %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/table.css') }}">
+
+<!-- Heading -->
+<br>
+<div class="container">
+    <div class="title2">
+        <h2>{{tour['id']}} - {{tour['name']}}:</h2>
+    </div>
+
+    <div class="search">
+        <input id="searchschedule" type="text" placeholder="Search schedule">
+    </div>
+</div>
+<br>
+<div class="title">
+    <p>When you hover over a row, other schedules that occur on the same date will also be highlighted in blue.</p>
+</div>
+
+<!-- Explain -->
+<div class="container">
+    <ul class="showcase">
+        <li>
+            <div class="row available"></div>
+            <small>Available</small>
+        </li>
+        <li>
+            <div class="row full"></div>
+            <small>Full</small>
+        </li>
+        <li>
+            <div class="row date"></div>
+            <small>Cursor</small>
+        </li>
+    </ul>
+</div>
+
+
+<!-- <br> -->
+<!-- ROUTES -->
+<!-- <table>
+    <div class="title">
+        <h3>Route</h3>
+    </div>
+    <tr>
+        <th>Stop ID</th>
+        <th>Stop Name</th>
+    </tr>
+    {% for stop in tour['routes'] %}
+        <tr>
+            <td>{{stop['stop_id']}}</td>
+            <td>{{stop['name']}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br> -->
+
+<!-- SCHEDULES -->
+<table>
+    <tr>
+        <th style="background-color: #3d3d3d;">Date</th>
+        <th style="background-color: #3d3d3d;">Slot</th>
+        <th style="background-color: #3d3d3d;">Tour ID</th>
+        <th style="background-color: #3d3d3d;">Tour Name</th>
+        <th style="background-color: #3d3d3d;">Duration</th>
+        <th style="background-color: #3d3d3d;">Bus ID</th>
+        <th style="background-color: #3d3d3d;">Available</th>
+        <th style="background-color: #3d3d3d;">Detail</th>
+        <th style="background-color: #3d3d3d;">Book</th>
+    </tr>
+    <tbody id="tab2">
+        {% for slot in schedules %}
+            {% set available_seats = slot['status']['total_available_seats'] %}
+            {% set total_seats = slot['status']['total_seats'] %}
+            <tr style="{% if available_seats > 0 %}background-color: #b9cc98;{% else %}background-color: #e5a3a3;{% endif %}">
+                <td>{{slot['date']}}</td>
+                <td>{{slot['slot']}}</td>
+                <td>{{tour['id']}}</td>
+                <td>{{tour['name']}}</td>
+                <td>{{tour['duration']}}</td>
+                <td>{{slot['bus_id']}}</td>
+                <td>{{ available_seats }}/{{ total_seats }}</td>
+                <td><button><a href="{{ url_for('main.list_single_schedule', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.bus_id) }}">More</a></button></td>
+                <td><button><a href="{{ url_for('main.book_seats', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.bus_id) }}">Book now</a></button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+
+<script>
+    $(document).ready(function () {
+        $("#searchschedule").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tab2 tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+        // Highlight rows with the same date when hovering
+        $("#tab2 tr").hover(function() {
+            var date = $(this).find("td:first").text();
+            $("#tab2 tr").each(function() {
+                if ($(this).find("td:first").text() === date) {
+                    $(this).addClass("highlight2");
+                }
+            });
+        }, function() {
+            $("#tab2 tr").removeClass("highlight2");
+        });
+    });
+</script>
