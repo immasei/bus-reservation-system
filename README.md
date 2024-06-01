@@ -5,29 +5,10 @@
 
 ## ERM
 
-* 8 Thực thể
+* 8 Entities
 
-  * Phương tiện - Chỗ ngồi - Khách hàng - Vé         
-  * Chuyến đi - Tuyến đường - Nhân viên - Trạm dừng 
-
-* Quan hệ và số lượng bản thể
-
-  * Mỗi `khách hàng` có thể <đặt trước> 1 hoặc nhiều `vé`.
-  * Mỗi `khách hàng` có thể <đặt trước> 1 hoặc nhiều `chỗ ngồi`.
-  * Mỗi `chỗ ngồi` <thuộc> chỉ 1 `phương tiện`
-  * Mỗi `phương tiện` có thể có 1 hoặc nhiều `chỗ ngồi`.
-  * Mỗi `vé` <thuộc> chỉ 1 `chuyến đi`.
-  * Mỗi `chuyến đi` có thể có 0 hoặc nhiều `vé`.
-  * Mỗi `chuyến đi` được <phụ trách bởi> 1 hoặc nhiều `nhân viên`.
-  * Mỗi `nhân viên` phụ trách 1 hoặc nhiều `chuyến đi`.
-  * Mỗi `chuyến đi` <đi qua> 1 hoặc nhiều `tuyến đường`.
-  * Mỗi `tuyến đường` có thể được đi qua bởi 0 hoặc nhiều chuyến đi.
-  * Mỗi `tuyến đường` có thể <bao gồm> 1 hoặc nhiều `trạm dừng`.
-  * Mỗi `trạm dừng` có thể được ghé bởi 0 hoặc nhiều `tuyến đường`.
- 
-```
- Nhấn vào hình để phóng to
-```
+  * Vehicles - Seats - Customers - Tickets       
+  * Trips - Routes - Employees - Stops
 
 <p align='center'>
   <img align='center' src='readme-resources/erm.png' width='750'/>
@@ -35,15 +16,9 @@
 
 <br>
 
-## Tổ chức dữ liệu dưới dạng JSON
-
-* Các tệp dữ liệu `*.json` nằm trong thư mục `/jsondata`
-
-<br>
-
 ## Code Python
 
-### Tải thư viện
+### Library Installation
 
 ```
   pip install flask
@@ -53,32 +28,28 @@
   pip install flask_socketio
 ```
 
-### Chạy chương trình
-
-* `cd` vào `SE1003-BTVN-3`:
-
+### Run program
 
 ```
   python3 run.py
 ```
 
-### Xử lý ERROR 404: Access to 127.0.0.1 was denied
+### ERROR 404: Access to 127.0.0.1 was denied
 
-* Vào đường dẫn dưới đây:
+* Follow this link:
   
-  * Nhấn `Flush socket pools`
+  * Press `Flush socket pools`
 
 ```
   chrome://net-internals/#sockets
 ```
 
-### Mô tả chức năng
+### Functionalities
 
 * `Homepage`:
   
-  * Định nghĩa đường dẫn `/`
-  * Dùng để di chuyển qua `[Tours]` hoặc `[Reservations]`
-    
+  * Root `/`
+  * Connect to `[Tours]` or `[Reservations]`  
  
  <p align='center'>
   <img align='center' src='readme-resources/homepage.png' width='750'/>
@@ -87,22 +58,22 @@
 <br>
  
 * `Tours`:
-  * Liệt kê tất cả các chuyến đi 
-  * Có thể trực tiếp di chuyển qua:
+  * List all tours
+  * Can connect to:
  
-    * `[More]` để xem thông tin chi tiết về 1 chuyến đi
-      * Chi tiết bao gồm:
+    * `[More]`: detailed information about a tour
+      * Includes:
         
-        * Thông tin về các nhân viên phụ trách
-        * Thống kê tình trạng vé của xe (của từng tầng):
+        * Employees
+        * Tickets Avalablity
           
-          * `sold` (đã bán)
-          * `processing` (chờ xác nhận)
-          * `available` (còn trống bao nhiêu)
+          * `sold` 
+          * `processing` 
+          * `available`
           
-    * `[Book now]` để đặt vé
+    * `[Book now]` to book tickets
     
-  * Có thể sử dụng thanh tìm kiếm để tìm chuyến đi bằng tên
+  * Search bar
  
 <p align='center'>
   <img align='center' src='readme-resources/all_tours.gif' width='750'/>
@@ -112,35 +83,35 @@
 
 * `Bookings`
   
-  * Điều kiện đặt vé thành công:
+  * Required for success booking:
     
-    * Điền đủ email + sđt (không kiểm tra tính hợp lệ)
-    * Chọn ít nhất 1 ghế
+    * Fill in email + tel (no verification here)
+    * Pick at least 1 seat
       
-  * Sau khi đặt vé thành công:
+  * After success booking:
     
-    * Người dùng sẽ được cấp mã KH
-    * Người dùng được coi là người dùng mới (được cấp mã mới) khi có (email, số điện thoại) độc nhất
-    * Vé sẽ được coi là `Processing`: đã đặt và đang chờ xác nhận
-    * Người dùng có thể tra những vé đã đặt qua `[Reservations]` bằng mã KH qua thanh tìm kiếm
+    * User is provided a customerID
+    * customerID is per (email, tel)
+    * Ticket is `Processing`: booked and wait for confirmations
+    * Booked tickets are listed in `[Reservations]`, search by customerID
    
  
 ```
-Giao diện đặt vé
+GUI - Booking
 ```  
 <p align='center'>
   <img align='center' src='readme-resources/bus_layout.gif' width='750'/>
 </p>
 
 ```
-Chọn ghế
+GUI - Picking seats
 ```
 <p align='center'>
   <img align='center' src='readme-resources/pick_seats.gif' width='750'/>
 </p>
 
 ```
-Đặt vé thành công
+GUI - Tickets bbooked
 ```
 <p align='center'>
   <img align='center' src='readme-resources/get_customer_id.png' width='750'/>
@@ -149,17 +120,15 @@ Chọn ghế
 <br>
 
 * `Reservations`:
-  * Liệt kê tất cả các vé xe đã đặt bởi 1 người dùng
-  * Cần phải sử dụng thanh tìm kiếm bằng mã KH được cấp
-  * Sau khi tìm kiếm vé bằng mã KH
-    * Người dùng có thể chọn `Cancel` vé hoặc `Confirm` vé.
+  * List all booked tickets of user using customerID
+  * `Cancel` ticket or `Confirm` ticket.
 
-  * Nếu người dùng xác nhận vé bằng `Confirm`:
-    * Vé (chỗ ngồi) sẽ chuyển về trạng thái `Sold`
-    * Vé đã xác nhận không thể huỷ vé bằng `Cancel`
+  * If `Confirm`:
+    * Tickets/ Seats is `Sold`
+    * Confirmed tickets can't be `Cancel`led
       
-  * Nếu người dùng huỷ vé bằng `Cancel`:
-    * Vé sẽ bị xoá bỏ, chỗ ngồi trở về trạng thái `Available`
+  * If `Cancel`:
+    * Ticket is deleted, seats become `Available`
 
  <p align='center'>
   <img align='center' src='readme-resources/find_reservations.png' width='750'/>
