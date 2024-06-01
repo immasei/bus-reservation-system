@@ -1,22 +1,4 @@
-# Hệ thống bán vé cho xe khách (n tầng)
-
-## Table of Contents
-**[ERM](#ERM)**<br>
-
-## ERM
-
-* 8 Entities
-
-  * Vehicles - Seats - Customers - Tickets       
-  * Trips - Routes - Employees - Stops
-
-<p align='center'>
-  <img align='center' src='readme-resources/erm.png' width='750'/>
-</p>
-
-<br>
-
-## Code Python
+# Bus Reservation System (n-level bus)
 
 ### Library Installation
 
