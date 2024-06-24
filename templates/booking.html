@@ -1,0 +1,165 @@
+{% include 'header.html' %}
+
+<div class="center-no-flex">
+    <h2>Bus Layout - {{schedule['busid']}} - {{schedule['name']}}</h2>
+    <p>Pick the seats - Confirm by pressing Book</p>
+    <br>
+    <!-- <div class="center">
+        <h5 style="margin-right: 5px; margin-bottom: 15px;">Datetime:</h5> 
+        <div class="showdt">
+            <input type="date" id="date" value="{{ schedule['date'] }}">
+            <span></span>
+            <input type="time" id="time" value="{{ schedule['slot'] }}">
+        </div>
+    </div> -->
+    <div class="center">
+        <!-- https://getbootstrap.com/docs/5.3/forms/validation/ -->
+        <form id="main-form" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Tel</span>
+                    <input id="telephone-text" type="text" class="form-control" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill in your contact.</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text">Email</span>
+                    <input id="email-text" type="text" class="form-control" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill in your gmail.</div>  
+                </div>
+            </div>
+            <div class="col-1">
+                <button id="book-btn" class="btn" style="background-color: #ffe597; border: 1px solid #f7b956" type="submit">Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+
+<!-- Explain -->
+<ul class="showcase">
+    <li>
+      <div class="seat space"></div>
+      <small>N/A</small>
+    </li>
+    <li>
+        <div class="seat occupied"></div>
+        <small>Occupied</small>
+    </li>
+    <li>
+      <div class="seat selected"></div>
+      <small>Selected</small>
+    </li>
+    <li>
+        <div class="seat selectedvip"></div>
+        <small>VIP</small>
+    </li>
+    <li>
+        <div class="seat unselected"></div>
+        <small>Unselected</small>
+    </li>
+</ul>
+
+<p>{{schedule['status']['layout']}}</p>
+<!-- Bus layout -->
+<div>
+    {% for floor in schedule['layout']%}
+    <div class="center">
+        <h2>Floor {{loop.index}}</h2>
+    </div>
+        <div class="bus">
+            <ol class="floor">
+                {% for row in floor['rows'] %}
+                    <li class="row row--1">
+                    <ol class="seats" type="A">
+                        {% for seat in row %}
+                            {% if seat['id'] == "" %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{seat['id']}}" />
+                                    <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                </li>
+                            {% elif seat['is_available'] == False %}
+                                <li class="seat">
+                                    <input type="checkbox" disabled id="{{seat['id']}}" />
+                                    <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                </li>
+                            {% else %}
+                                {% if seat['is_vip'] == False %}
+                                    <li class="seat">
+                                        <input type="checkbox" id="{{seat['id']}}" />
+                                        <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                    </li>
+                                {% else %}
+                                    <li class="seat yellow-seat">
+                                        <input type="checkbox" id="{{seat['id']}}" />
+                                        <label for="{{seat['id']}}">{{seat['id']}}</label>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Hidden form for successful booking -->
+<form id="hidden-form" method="POST" action="">
+    <input id="telephone" name="telephone" type="hidden">
+    <input id="email" name="email" type="hidden">
+    <input id="seats" name="seats" type="hidden">
+</form>
+
+<script>
+    const message = "{{ message }}";
+    if (message)
+        flash('success', message);
+
+    (() => {
+        'use strict'
+    
+        const main_form = document.getElementById('main-form');
+        const hidden_form = document.getElementById('hidden-form');
+
+        main_form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+    
+            if (!main_form.checkValidity()) {
+                main_form.classList.add('was-validated');
+                return;
+            }
+    
+            const seats = Array.from(document.querySelectorAll('.seat input[type="checkbox"]:checked'))
+                .map(checkbox => checkbox.id);
+
+            if (seats.length === 0) {
+                flash('danger', 'Pick the seats.')
+                
+            } else {
+                document.getElementById('telephone').value = document.getElementById('telephone-text').value;
+                document.getElementById('email').value = document.getElementById('email-text').value;
+                document.getElementById('seats').value = seats.join('|');
+                
+                document.getElementById('hidden-form').submit();
+            }
+        });
+    })()
+
+    function flash(category, message) {
+        // https://www.w3schools.com/bootstrap/bootstrap_alerts.asp
+        // https://stackoverflow.com/questions/17650776/add-remove-html-inside-div-using-javascript
+        var flash = document.getElementById('flash');
+        $('#flash').empty();
+        flash.innerHTML = '<div class="alert alert-' + category +  ' alert-dismissible">' +
+                            '<strong>' + message + '</strong>' +
+                            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    }
+
+
+</script>

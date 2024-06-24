@@ -1,0 +1,31 @@
+{% include 'header.html' %}
+
+<br>
+<div class="title">
+    <h2>List all ongoing tours</h2>
+</div>
+<br>
+<div class="input-group mb-3">
+    <span class="input-group-text">Search</i></span>
+    <input id="settingSearch" class="form-control" placeholder="Tour">
+</div>
+<table id="settingTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tour in tours %}
+            <tr>
+                <td>{{tour['id']}}</td>
+                <td>{{tour['name']}}</td>
+                <td>{{tour['duration']}}</td>
+                <td><button><a href="{{ url_for('list_tour_schedules', tourid=tour.id) }}">See schedules</a></button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

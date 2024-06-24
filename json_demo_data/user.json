@@ -1,0 +1,9 @@
+{
+    "user": [
+        {
+            "username": "sei",
+            "password": "123",
+            "is_admin": true
+        }
+    ]
+}

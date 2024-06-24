@@ -1,0 +1,31 @@
+{
+    "employee": [
+        {
+            "id": "E1",
+            "name": "Nguyen Van A",
+            "role": "driver",
+            "tel": "0423876878",
+            "email": "e1@gmail.com",
+            "cmnd": "99120312213",
+            "address": "Dia chi 1"
+        },
+        {
+            "id": "E2",
+            "name": "Ta Van B",
+            "role": "assistant",
+            "tel": "0523658767",
+            "email": "e2@gmail.com",
+            "cmnd": "991280312213",
+            "address": "Dia chi 2"
+        },
+        {
+            "id": "E3",
+            "name": "Dao Thi Thai",
+            "role": "driver",
+            "tel": "05456446456",
+            "email": "e3@gmail.com",
+            "cmnd": "934534534513",
+            "address": "Dia chi 3"
+        }
+    ]
+}

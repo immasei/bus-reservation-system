@@ -1,0 +1,78 @@
+{% include 'header.html' %}
+
+<div class="center">
+    <h2>{{tour['id']}} - {{tour['name']}}:</h2>
+</div>
+<br>
+
+<div class="center">
+    <div class="datetimepicker">
+        <input type="date" id="date">
+        <span></span>
+        <input type="time" id="time">
+    </div>
+</div>
+
+<br>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="table-success">
+            <th>Date</th>
+            <th>Slot</th>
+            <th>Tour ID</th>
+            <th>Tour Name</th>
+            <th>Duration</th>
+            <th>Bus ID</th>
+            <th>Available</th>
+            <th>Detail</th>
+            <th>Book</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        {% for slot in schedules %}
+            {% set available_seats = slot['status']['total_available_seats'] %}
+            {% set total_seats = slot['status']['total_seats'] %}
+            {% if available_seats > 0 %}
+                <tr>  
+                    <td>{{slot['date']}}</td>
+                    <td>{{slot['slot']}}</td>
+                    <td>{{tour['id']}}</td>
+                    <td>{{tour['name']}}</td>
+                    <td>{{tour['duration']}}</td>
+                    <td>{{slot['busid']}}</td>
+                    <td>{{ available_seats }}/{{ total_seats }}</td>
+                    <td><button><a href="{{ url_for('get_schedule_detail', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">More</a></button></td>
+                </tr>
+            {% else %}
+                <tr class="table-danger">
+                    <td>{{slot['date']}}</td>
+                    <td>{{slot['slot']}}</td>
+                    <td>{{tour['id']}}</td>
+                    <td>{{tour['name']}}</td>
+                    <td>{{tour['duration']}}</td>
+                    <td>{{slot['busid']}}</td>
+                    <td>{{ available_seats }}/{{ total_seats }}</td>
+                    <td><button><a href="{{ url_for('get_schedule_detail', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">More</a></button></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#table-body tr").hover(
+            function() {
+                // Store the current class to restore it later
+                var currentClass = $(this).attr('class');
+                $(this).data('originalClass', currentClass);
+                $(this).removeClass().addClass('table-info');
+            }, 
+            function() {
+                // Restore the original class
+                var originalClass = $(this).data('originalClass');
+                $(this).removeClass().addClass(originalClass);
+            }
+        );
+    })
+</script>

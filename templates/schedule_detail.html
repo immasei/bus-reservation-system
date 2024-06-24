@@ -1,0 +1,97 @@
+{% include 'header.html' %}
+
+<div class="center">
+    <h2>{{schedule['id']}} - {{schedule['name']}} - {{schedule['busid']}}</h2>
+</div>
+
+<br>
+
+<div class="center">
+    <h5 style="margin-right: 5px; margin-bottom: 15px;">Datetime:</h5> 
+    <div class="showdt">
+        <input type="date" id="date" value="{{ schedule['date'] }}">
+        <span></span>
+        <input type="time" id="time" value="{{ schedule['slot'] }}">
+    </div>
+</div>
+
+<br>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="table-success">
+            <th>Date</th>
+            <th>Slot</th>
+            <th>Tour ID</th>
+            <th>Tour Name</th>
+            <th>Duration</th>
+            <th>Bus ID</th>
+            <th>Available</th>
+            <th>Book</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{schedule['date']}}</td>
+            <td>{{schedule['slot']}}</td>
+            <td>{{schedule['id']}}</td>
+            <td>{{schedule['name']}}</td>
+            <td>{{schedule['duration']}}</td>
+            <td>{{schedule['busid']}}</td>
+            <td>{{ schedule['status']['total_available_seats'] }}/{{ schedule['status']['total_seats'] }}</td>
+            <td><button><a href="{{ url_for('get_seats_layout', tourid=schedule.id,  datetime=schedule.date ~ 'T' ~ schedule.slot, busid=schedule.busid) }}">Book now</a></button></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- <div class="sub-title"> -->
+        <h4>Available seats</h4>
+        <!-- </div> -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr class="table-secondary">
+                    <th>Floor</th>
+                    <th>Processing</th>
+                    <th>Sold</th>
+                    <th>Available</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for floor in schedule['layout'] %}
+                <tr>
+                    <td>{{floor['id']}}</td>
+                    <td>{{floor['processing_seats']}}</td>
+                    <td>{{floor['confirmed_seats']}}</td>
+                    <td>{{floor['available_seats']}}</td>
+                    <td>{{ floor['processing_seats']+floor['confirmed_seats']+floor['available_seats'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h4>Contacts</h4>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr class="table-secondary">
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Telephone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                    <tr>
+                        <td>{{employee['name']}}</td>
+                        <td>{{employee['role']}}</td>
+                        <td>{{employee['tel']}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

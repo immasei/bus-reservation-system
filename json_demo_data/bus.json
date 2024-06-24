@@ -1,0 +1,17 @@
+{
+	"bus": [
+		{
+			"id": "B1",
+			"layout_id": "L1"
+		},
+		{
+			"id": "B2",
+			"layout_id": "L2"
+		},
+		{
+			"id": "B3",
+			"layout_id": "L1"
+		}
+	]
+}
+

@@ -1,0 +1,65 @@
+{
+    "ticket": [
+        {
+            "date": "2024-12-25",
+            "slots": [
+                {
+                    "slot": "09:00",
+                    "tours": [
+                        {
+                            "id": "T1",
+                            "buses": [
+                                {
+                                    "id": "B3",
+                                    "customers": [
+                                        {
+                                            "id": "C1",
+                                            "telephone": 1,
+                                            "email": "a",
+                                            "tickets": [
+                                                {
+                                                    "id": "TK1",
+                                                    "booking_date": "2022-11-29T13:52Z",
+                                                    "seat_id": "111",
+                                                    "confirmed": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "slot": "07:00",
+                    "tours": [
+                        {
+                            "id": "T1",
+                            "buses": [
+                                {
+                                    "id": "B1",
+                                    "customers": [
+                                        {
+                                            "id": "C2",
+                                            "telephone": 2,
+                                            "email": "b",
+                                            "tickets": [
+                                                {
+                                                    "id": "TK2",
+                                                    "booking_date": "2022-11-29T13:52Z",
+                                                    "seat_id": "215",
+                                                    "confirmed": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
