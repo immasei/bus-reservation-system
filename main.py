@@ -28,7 +28,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @app.on_event("startup")
-def startup_db_client():
+async def startup_db_client():
     app.mongodb_client = MongoClient(URI)
     app.database = app.mongodb_client[DBNAME]
 
@@ -42,7 +42,7 @@ def startup_db_client():
     # app.mongodb_client.drop_database(DBNAME)
 
 @app.on_event("shutdown")
-def shutdown_db_client():
+async def shutdown_db_client():
     app.mongodb_client.close()
 
 @app.get("/", response_class=HTMLResponse)
