@@ -1,5 +1,3 @@
-from fastapi import Depends
-from typing import List
 from datetime import datetime as dt, timezone
 import pymongo
 

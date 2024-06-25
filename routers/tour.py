@@ -52,7 +52,6 @@ async def get_seats_layout(request: Request, tourid, datetime, busid):
 
 @router.post("/{tourid}/{datetime}/{busid}/booking", response_class=HTMLResponse)
 async def book_seats(request: Request, tourid, datetime, busid, booking: Booking = Depends()):
-    # print(booking.seats)
     customer_id = database.create_tickets(tourid, datetime, busid, booking, request.app.database)
     schedule = database.find_single_schedule(tourid, datetime, busid, request.app.database)
 
