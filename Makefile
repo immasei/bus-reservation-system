@@ -1,5 +1,5 @@
 build:
-	python -m uvicorn main:app --reload
+	python3 -m uvicorn main:app --reload
 
 clean:
 	find . -name "__pycache__" -exec rm -rf {} +
