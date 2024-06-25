@@ -29,6 +29,8 @@ A web application that's designed to the manage booking and cancellation of bus 
 
 ### Execution
 
+* Setup virtual environment
+
 * Startup MongoDB server
 
   ```
