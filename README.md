@@ -184,7 +184,7 @@ avatar https://www.flaticon.com/free-icon/bus_5030991
 
 seats css https://gist.github.com/aleckyann/98802940060703b9fd99b40e84c2753e
 
-datetime css https://codepen.io/herteleo/pen/LraqoZ */
+datetime css https://codepen.io/herteleo/pen/LraqoZ
 
 color palettes https://www.color-hex.com/color-palettes/
 
