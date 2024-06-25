@@ -32,11 +32,12 @@ async def list_tour_schedules(request: Request, tourid):
 @router.get("/{tourid}/{datetime}/{busid}", response_description="Get a schedule by id", response_class=HTMLResponse)
 async def get_schedule_detail(request: Request, tourid, datetime, busid):
     schedule = database.find_single_schedule(tourid, datetime, busid, request.app.database)
+    employees = database.find_employees(tourid, datetime, busid, request.app.database)
     
     return templates.TemplateResponse(
         request=request, 
         name='schedule_detail.html', 
-        context={'schedule': schedule}
+        context={'schedule': schedule, 'employees': employees}
     )
 
 @router.get("/{tourid}/{datetime}/{busid}/booking", response_class=HTMLResponse)

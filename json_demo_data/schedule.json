@@ -17,21 +17,21 @@
 											"arrival_stop": "S2",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S2",
 											"arrival_stop": "S3",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S3",
 											"arrival_stop": "S1",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										}
 									]
 								},
@@ -43,21 +43,21 @@
 											"arrival_stop": "S2",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S2",
 											"arrival_stop": "S3",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S3",
 											"arrival_stop": "S1",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										}
 									]
 								}
@@ -79,21 +79,21 @@
 											"arrival_stop": "S2",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S2",
 											"arrival_stop": "S3",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S3",
 											"arrival_stop": "S1",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										}
 									]
 								}
@@ -120,21 +120,21 @@
 											"arrival_stop": "S2",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S2",
 											"arrival_stop": "S3",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										},
 										{
 											"departure_stop": "S3",
 											"arrival_stop": "S1",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E1", "E2"]
+											"employees": ["E1", "E2"]
 										}
 									]
 								}
@@ -151,14 +151,14 @@
 											"arrival_stop": "S2",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E2", "E3"]
+											"employees": ["E2", "E3"]
 										},
 										{
 											"departure_stop": "S2",
 											"arrival_stop": "S3",
 											"arrival_time": "2024-12-25T14:00Z",
 											"departure_time": "2024-12-25T14:30Z",
-											"employees_id": ["E2", "E3"]
+											"employees": ["E2", "E3"]
 										}
 									]
 								}

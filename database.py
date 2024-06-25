@@ -466,3 +466,35 @@ def cancel_ticket(customer_id, ticket_id, mongodb):
 
     tickets = search_tickets_by_customer(customer_id, mongodb)
     return tickets
+
+def find_employees(tourid, datetime, busid, mongodb):
+    date, time = datetime.split('T')
+
+    ids = mongodb['schedule'].aggregate([
+        { '$match': { 'date': date } },
+        { '$unwind': '$slots'},  
+        { '$match': { 'slots.slot': time } },
+        { '$unwind': '$slots.tours'}, 
+        { '$match': { 'slots.tours.id': tourid } },
+        { '$unwind': '$slots.tours.buses'}, 
+        { '$match': { 'slots.tours.buses.id': busid } },
+        { '$unwind': '$slots.tours.buses.routes' },
+        { '$unwind': '$slots.tours.buses.routes.employees' },
+        { '$group': {
+            '_id': None,
+            'employees': { '$push': '$slots.tours.buses.routes.employees' }
+        }},
+        { '$project': {
+            '_id': 0,
+            'employees': 1
+        }}
+    ])
+
+    ids = list(ids)[0]['employees']
+    ids = list(set(ids))
+
+    employees = mongodb['employee'].find(
+        { 'id' : { '$in': ids } }
+    )
+
+    return list(employees)
