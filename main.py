@@ -32,6 +32,8 @@ def startup_db_client():
         from restart import load_data
         load_data(app.database)
 
+    # to restart demo data, uncomment this line
+    # wait for application to restart, uncomment it again
     # app.mongodb_client.drop_database(DBNAME)
 
 @app.on_event("shutdown")

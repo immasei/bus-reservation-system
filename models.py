@@ -37,7 +37,7 @@ class Tour(BaseModel):
 class Booking(BaseModel):
     # https://github.com/tiangolo/fastapi/issues/5588
     email: str
-    telephone: int
+    telephone: str
     seats: List[str] = []
 
     @field_validator('seats', mode='before')
