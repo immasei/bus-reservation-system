@@ -1,9 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 from dotenv import dotenv_values
 from pymongo import MongoClient
-from routers import tour
+from routers import tour, reservation
 
 # https:stackoverflow.com/questions/45732838/authentication-failed-to-connect-to-mongodb-using-pymongo
 # https://www.mongodb.com/resources/languages/pymongo-tutorial
@@ -19,6 +20,7 @@ URI = "mongodb://" + USR + ":" + PWD + "@" + \
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
 @app.on_event("startup")
 def startup_db_client():
@@ -36,4 +38,9 @@ def startup_db_client():
 def shutdown_db_client():
     app.mongodb_client.close()
 
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse(request=request, name='index.html')
+
 app.include_router(tour.router, tags=["tours"], prefix="/tours")
+app.include_router(reservation.router, tags=["reservations"], prefix="/reservations")

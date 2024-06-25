@@ -1,21 +1,21 @@
 {% include 'header.html' %}
 
-<br>
-<div class="title">
+<div class="center">
     <h2>List all ongoing tours</h2>
 </div>
+
 <br>
 <div class="input-group mb-3">
     <span class="input-group-text">Search</i></span>
-    <input id="settingSearch" class="form-control" placeholder="Tour">
+    <input id="search" class="form-control" placeholder="Any">
 </div>
-<table id="settingTable" class="table table-bordered table-striped">
-    <thead>
+<table id="table" class="table table-bordered table-striped">
+    <thead class="table-success">
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Duration</th>
-            <th>Detail</th>
+            <th>See schedules</th>
         </tr>
     </thead>
     <tbody>
@@ -24,8 +24,25 @@
                 <td>{{tour['id']}}</td>
                 <td>{{tour['name']}}</td>
                 <td>{{tour['duration']}}</td>
-                <td><button><a href="{{ url_for('list_tour_schedules', tourid=tour.id) }}">See schedules</a></button></td>
+                <td>
+                    <button class="btn btn-link">
+                        <a href="{{ url_for('list_tour_schedules', tourid=tour.id) }}">
+                            <i class="bi bi-calendar-check"></i>
+                        </a>
+                    </button>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<script>
+    $(document).ready(() => {
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    })
+</script>

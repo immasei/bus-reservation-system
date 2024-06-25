@@ -8,7 +8,7 @@
 
 <div class="center">
     <h5 style="margin-right: 5px; margin-bottom: 15px;">Datetime:</h5> 
-    <div class="showdt">
+    <div class="datetimepicker">
         <input type="date" id="date" value="{{ schedule['date'] }}">
         <span></span>
         <input type="time" id="time" value="{{ schedule['slot'] }}">
@@ -38,7 +38,13 @@
             <td>{{schedule['duration']}}</td>
             <td>{{schedule['busid']}}</td>
             <td>{{ schedule['status']['total_available_seats'] }}/{{ schedule['status']['total_seats'] }}</td>
-            <td><button><a href="{{ url_for('get_seats_layout', tourid=schedule.id,  datetime=schedule.date ~ 'T' ~ schedule.slot, busid=schedule.busid) }}">Book now</a></button></td>
+            <td>
+                <button class="btn btn-link">
+                    <a href="{{ url_for('get_seats_layout', tourid=schedule.id,  datetime=schedule.date ~ 'T' ~ schedule.slot, busid=schedule.busid) }}">
+                        <i class="bi bi-bookmark-check"></i>
+                    </a>
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>

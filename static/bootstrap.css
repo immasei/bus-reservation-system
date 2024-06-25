@@ -1,9 +1,0 @@
-.navbar {
-    height: 70px !important; /*i assume your navbar size 100px*/
-}
-
-/* https://stackoverflow.com/questions/15643037/how-do-i-change-the-hover-over-color-for-a-hover-over-table-in-bootstrap */
-
-/* .table tbody tr:hover td, .table tbody tr:hover th {
-    background-color: 	#bbbbbb;
-} */

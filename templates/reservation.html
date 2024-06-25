@@ -1,0 +1,100 @@
+{% include 'header.html' %}
+
+<button type="button" class="btn" style="background-color: 	#c5e1e8; border: 1px solid #719ab8;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch
+</button>
+
+<div class="center-no-flex">
+    <h2>Find reservations</h2>
+    <br>
+    <p>You can cancel or confirm your bookings here.</p>
+    <p>You cannot cancel a confirmation.</p>
+</div>
+
+<br>
+  
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Find reservations for:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" class="was-validated" action="{{ url_for('list_reservations') }}">
+                    <div class="mb-3">
+                        <label for="customerid" class="form-label">Customer ID:</label>
+                        <input type="text" class="form-control" id="customerid" name="customerid" placeholder="Enter CID" required>
+                        <div class="valid-feedback">Are you sure? :D</div>
+                        <div class="invalid-feedback">Please identify yourself.</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" style="background-color: #e7e7e7; border: 1px solid #333333" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn" style="background-color: #ffe599; border: 1px solid #f7b956">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Tour</th>
+            <th>Departure</th>
+            <th>Bus</th>
+            <th>Seat</th>
+            <th>Type</th>
+            <th>Booking date</th>
+            <th>Price</th>
+            <th>Confirm</th>
+            <th>Cancel</th>
+        </tr>
+    <tbody>
+    {% for ticket in tickets %}
+        <tr>
+            <td>{{ticket['id']}}</td>
+            <td>
+                <button class="btn">
+                    <a href="{{ url_for('list_tour_schedules', tourid=ticket.tourid) }}">{{ticket['tourid']}}-{{ticket['tour_name']}}</a>
+                </button>
+            </td>
+            <td><button class="btn"><a href="{{ url_for('get_schedule_detail', tourid=ticket.tourid,  datetime=ticket.date ~ 'T' ~ ticket.slot, busid=ticket.busid) }}">{{ticket['date']}} {{ticket['slot']}}</a></button></td>
+            <td>{{ticket['busid']}}</td>
+            <td>{{ticket['seat_id']}}</td>
+            <td><span class="badge {{ ticket['type'] }}">{{ ticket['type'] }}</span></td>
+            <td>{{ticket['booking_date']}}</td>
+            <td>{{ticket['price']}}</td>
+            {% if ticket['confirmed'] == false %}
+                <td>
+                    <button class="btn btn-link" onclick="flash('success', 'You have been charged {{ticket.price}}.')">
+                        <a href="{{ url_for('confirm_ticket', customerid=customerid, ticketid=ticket.id) }}">
+                            <i class="bi bi-check-square-fill" style="color: #bdc499;"></i>
+                        </a>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-link" onclick="flash('danger', 'This would delete ticket {{ticket.id}}.')">
+                        <a href="{{ url_for('cancel_ticket', customerid=customerid, ticketid=ticket.id) }}">
+                            <i class="bi bi-trash3-fill" style="color: 	#cf8985;"></i>
+                        </a>
+                    </button>
+                </td>
+            {% else %}
+                <td><button class="btn btn-link"><i class="bi bi-dash-lg"></i></button></td>
+                <td><button class="btn btn-link"><i class="bi bi-dash-lg"></i></button></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script src="/static/js/script.js"></script>
+<script>
+    let message = {{ message | tojson }};
+    if (message.text) 
+        flash(message.category, message.text);
+</script>

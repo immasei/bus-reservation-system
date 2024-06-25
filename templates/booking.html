@@ -4,14 +4,6 @@
     <h2>Bus Layout - {{schedule['busid']}} - {{schedule['name']}}</h2>
     <p>Pick the seats - Confirm by pressing Book</p>
     <br>
-    <!-- <div class="center">
-        <h5 style="margin-right: 5px; margin-bottom: 15px;">Datetime:</h5> 
-        <div class="showdt">
-            <input type="date" id="date" value="{{ schedule['date'] }}">
-            <span></span>
-            <input type="time" id="time" value="{{ schedule['slot'] }}">
-        </div>
-    </div> -->
     <div class="center">
         <!-- https://getbootstrap.com/docs/5.3/forms/validation/ -->
         <form id="main-form" class="row g-3 needs-validation" novalidate>
@@ -115,10 +107,11 @@
     <input id="seats" name="seats" type="hidden">
 </form>
 
+<script src="/static/js/script.js"></script>
 <script>
-    const message = "{{ message }}";
-    if (message)
-        flash('success', message);
+    let message = {{ message | tojson }};
+    if (message.text) 
+        flash(message.category, message.text);
 
     (() => {
         'use strict'
@@ -150,16 +143,4 @@
             }
         });
     })()
-
-    function flash(category, message) {
-        // https://www.w3schools.com/bootstrap/bootstrap_alerts.asp
-        // https://stackoverflow.com/questions/17650776/add-remove-html-inside-div-using-javascript
-        var flash = document.getElementById('flash');
-        $('#flash').empty();
-        flash.innerHTML = '<div class="alert alert-' + category +  ' alert-dismissible">' +
-                            '<strong>' + message + '</strong>' +
-                            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-    }
-
-
 </script>

@@ -1,20 +1,15 @@
 {% include 'header.html' %}
 
 <div class="center">
-    <h2>{{tour['id']}} - {{tour['name']}}:</h2>
-</div>
-<br>
-
-<div class="center">
-    <div class="datetimepicker">
-        <input type="date" id="date">
-        <span></span>
-        <input type="time" id="time">
-    </div>
+    <h2>{{tour['id']}} - {{tour['name']}} - All schedules</h2>
 </div>
 
 <br>
-<table class="table table-bordered table-striped">
+<div class="input-group mb-3">
+    <span class="input-group-text">Search</i></span>
+    <input id="search" class="form-control" placeholder="Any">
+</div>
+<table id="table" class="table table-bordered table-striped">
     <thead>
         <tr class="table-success">
             <th>Date</th>
@@ -41,7 +36,20 @@
                     <td>{{tour['duration']}}</td>
                     <td>{{slot['busid']}}</td>
                     <td>{{ available_seats }}/{{ total_seats }}</td>
-                    <td><button><a href="{{ url_for('get_schedule_detail', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">More</a></button></td>
+                    <td>
+                        <button class="btn btn-link">
+                            <a href="{{ url_for('get_schedule_detail', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-link">
+                            <a href="{{ url_for('get_seats_layout', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">
+                                <i class="bi bi-bookmark-check"></i>
+                            </a>
+                        </button>
+                    </td>
                 </tr>
             {% else %}
                 <tr class="table-danger">
@@ -52,7 +60,20 @@
                     <td>{{tour['duration']}}</td>
                     <td>{{slot['busid']}}</td>
                     <td>{{ available_seats }}/{{ total_seats }}</td>
-                    <td><button><a href="{{ url_for('get_schedule_detail', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">More</a></button></td>
+                    <td>
+                        <button class="btn btn-link">
+                            <a href="{{ url_for('get_schedule_detail', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-link">
+                            <a href="{{ url_for('get_seats_layout', tourid=tour.id,  datetime=slot.date ~ 'T' ~ slot.slot, busid=slot.busid) }}">
+                                <i class="bi bi-bookmark-check"></i>
+                            </a>
+                        </button>
+                    </td>
                 </tr>
             {% endif %}
         {% endfor %}
@@ -61,6 +82,12 @@
 
 <script>
     $(document).ready(function () {
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
         $("#table-body tr").hover(
             function() {
                 // Store the current class to restore it later

@@ -434,3 +434,35 @@ def create_tickets(tourid, datetime, busid, Booking, mongodb):
     )
 
     return customer_id
+
+def search_tickets_by_customer(customer_id, mongodb):
+    tickets = find_all_tickets(mongodb)
+    res = [ticket for ticket in tickets if ticket['customer_id'] == customer_id.upper()]
+
+    return res
+
+def confirm_ticket(customer_id, ticket_id, mongodb):
+    mongodb['ticket'].update_one(
+        { 'slots.tours.buses.customers': {
+            '$elemMatch': { 'id': customer_id, 'tickets.id': ticket_id }
+        }},
+        { '$set': {
+            'slots.$[].tours.$[].buses.$[].customers.$[customer].tickets.$[ticket].confirmed': True
+        }},
+        array_filters=[ { 'customer.id': customer_id }, { 'ticket.id': ticket_id } ]
+    )
+
+    tickets = search_tickets_by_customer(customer_id, mongodb)
+    return tickets
+
+def cancel_ticket(customer_id, ticket_id, mongodb):
+    mongodb['ticket'].update_one(
+        { 'slots.tours.buses.customers.id': customer_id },
+        { '$pull': {
+            'slots.$[].tours.$[].buses.$[].customers.$[customer].tickets': { 'id': ticket_id }
+        }},
+        array_filters=[ { 'customer.id': customer_id } ]
+    )
+
+    tickets = search_tickets_by_customer(customer_id, mongodb)
+    return tickets
