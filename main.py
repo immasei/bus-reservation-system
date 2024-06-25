@@ -15,8 +15,13 @@ USR = config['USR']
 PWD = config['PWD']
 HOST = config['HOST']
 DBNAME = config['DB_NAME']
-URI = "mongodb://" + USR + ":" + PWD + "@" + \
-          HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
+
+# localhost
+# URI = "mongodb://" + USR + ":" + PWD + "@" + \
+#           HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
+
+# cloud
+URI = f'mongodb+srv://{USR}:{PWD}@{HOST}.vc6tdje.mongodb.net/'
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
