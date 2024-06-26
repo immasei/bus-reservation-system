@@ -10,7 +10,7 @@
 
 * **Language**: Python
 
-|            | Latest                  | Commit 8aa122f & before |
+|            | Current                 | commit 8aa122f & before |
 | :--------  | :-----------------------| :------------------------ | 
 | Frontend   | HTML/ CSS + Bootstrap 5 | HTML/ CSS                 |
 | Backend    | FastAPI		  		       | Flask                     |
