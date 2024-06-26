@@ -1,4 +1,4 @@
-# The N-Level Bus Reservation System
+## The N-Level Bus Reservation System
 
 ### Table of Contents
 **[Tech Stack](#Techstack)**<br>
