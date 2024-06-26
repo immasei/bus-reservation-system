@@ -23,9 +23,6 @@ DBNAME = config['DB_NAME']
 # cloud
 MONGODB_URI = f'mongodb+srv://{USR}:{PWD}@{HOST}.vc6tdje.mongodb.net/'
 
-# MONGODB_URI = os.getenv("MONGODB_URI")
-# DBNAME = os.getenv("DBNAME")
-
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")

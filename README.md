@@ -53,6 +53,14 @@ A web application that's designed to the manage booking and cancellation of bus 
   ```
   Upon running application, it will automatically load the demo data to your database under `bus_reservation`
 
+  If you are using mongodb atlas (cloud), replace `HOST`
+
+  ```
+  HOST=<your clustername>
+  ```
+
+  You can also replace `MONGODB_URI` in `main.py`
+
 <br>
 
 * Run program
