@@ -1,24 +1,20 @@
 # The N-Level Bus Reservation System
 
 ### Table of Contents
-**[Tech Stack](#Tech-Stack)**<br>
+**[Tech Stack](#Techstack)**<br>
 **[Execution](#Execution)**<br>
 **[Demo Features](#Features)**<br>
 **[References](#References)**<br>
 
 ### Tech-Stack
 
-* **Language**: Python
-
-|            | Current                 | commit 8aa122f & before |
+|            | Current                 | commit 8aa122f & before   |
 | :--------  | :-----------------------| :------------------------ | 
 | Frontend   | HTML/ CSS + Bootstrap 5 | HTML/ CSS                 |
-| Backend    | FastAPI		  		       | Flask                     |
+| Backend    | FastAPI (Python)		  	 | Flask (Python)            |
 | Database   | MongoDB						  	 | JSON text file            |
 
 ### Execution
-
-* Setup virtual environment
 
 * Startup MongoDB server
   
