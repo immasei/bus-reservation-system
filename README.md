@@ -6,7 +6,7 @@
 **[Demo Features](#Features)**<br>
 **[References](#References)**<br>
 
-### Tech-Stack
+### Techstack
 
 |            | Current                 | commit 8aa122f & before   |
 | :--------  | :-----------------------| :------------------------ | 
