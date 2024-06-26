@@ -102,9 +102,9 @@
    * `Employees`: name | role | contact
 
       
-  <p align='center'>
+   <p align='center'>
     <img align='center' src='readme-resources/detail.gif' width='750'/>
-  </p>
+   </p>
 
    * `Bookings`:
 
