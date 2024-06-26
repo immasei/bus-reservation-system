@@ -9,19 +9,21 @@ from routers import tour, reservation
 # https:stackoverflow.com/questions/45732838/authentication-failed-to-connect-to-mongodb-using-pymongo
 # https://www.mongodb.com/resources/languages/pymongo-tutorial
 
-config = dotenv_values(".env")
+# config = dotenv_values(".env")
 
-USR = config['USR']
-PWD = config['PWD']
-HOST = config['HOST']
-DBNAME = config['DB_NAME']
+# USR = config['USR']
+# PWD = config['PWD']
+# HOST = config['HOST']
+# DBNAME = config['DB_NAME']
 
 # localhost
-# URI = "mongodb://" + USR + ":" + PWD + "@" + \
+# MONGODB_URI = "mongodb://" + USR + ":" + PWD + "@" + \
 #           HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
 
 # cloud
-URI = f'mongodb+srv://{USR}:{PWD}@{HOST}.vc6tdje.mongodb.net/'
+# MONGODB_URI = f'mongodb+srv://{USR}:{PWD}@{HOST}.vc6tdje.mongodb.net/'
+
+MONGODB_URI = os.getenv("MONGODB_URI")
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -29,7 +31,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.on_event("startup")
 async def startup_db_client():
-    app.mongodb_client = MongoClient(URI)
+    app.mongodb_client = MongoClient(MONGODB_URI)
     app.database = app.mongodb_client[DBNAME]
 
     # if database not exist, reload demo data
