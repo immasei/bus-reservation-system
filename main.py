@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse
 from dotenv import dotenv_values
 from pymongo import MongoClient
 from routers import tour, reservation
+import os
 
 # https:stackoverflow.com/questions/45732838/authentication-failed-to-connect-to-mongodb-using-pymongo
 # https://www.mongodb.com/resources/languages/pymongo-tutorial
