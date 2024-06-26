@@ -6,62 +6,70 @@
 **[Demo](#Features)**<br>
 **[References](#References)**<br>
 
-### Overview
-A web application that's designed to the manage booking and cancellation of bus reservations.
-
 ### Tech-Stack
 
-* **Current**
-  
-  * **Frontend**: HTML/ CSS + Bootstrap 5
-  
-  * **Backend**: FastAPI
-  
-  * **Database**: MongoDB
- 
-* **Commit 8aa122f and before**
+* **Language**: Python
 
-  * **Frontend**: HTML/ CSS
-  
-  * **Backend**: Flask
-  
-  * **Database**: JSON text file
+|            | Latest                  | Commit 8aa122f & before |
+| :--------  | :-----------------------| :------------------------ | 
+| Frontend   | HTML/ CSS + Bootstrap 5 | HTML/ CSS                 |
+| Backend    | FastAPI		  		       | Flask                     |
+| Database   | MongoDB						  	 | JSON text file            |
 
 ### Execution
 
 * Setup virtual environment
 
 * Startup MongoDB server
+  
+  * localhost
 
-  ```
-  https://www.mongodb.com/docs/manual/administration/install-community/
-  ```
+    ```
+      https://www.mongodb.com/docs/manual/administration/install-community/
+    ```
 
-* Libraries Installation
+  * cloud
+    
+    ```
+      https://www.mongodb.com/products/platform/atlas-database
+    ```
+
+* Dependencies Installation
   
   ```
-  pip install -r requirements.txt
+    pip install -r requirements.txt
   ```
 
 * Go to `.env` file, replace `USR` and `PWD`
 
   ```
-  USR=<your username>
-  PWD=<your password>
-  HOST=localhost:27017
-  DB_NAME=bus_reservation
+    USR=<your username>
+    PWD=<your password>
+    HOST=localhost:27017
+    DB_NAME=bus_reservation
   ```
   Upon running application, it will automatically load the demo data to your database under `bus_reservation`
 
   If you are using mongodb atlas (cloud), replace `HOST`
 
   ```
-  HOST=<your clustername>
+    HOST=<your clustername>
   ```
 
-  You can also replace `MONGODB_URI` in `main.py`
+* Go to `main.py`, replace `MONGODB_URI`
 
-<br>
+  * localhost
+
+    ```
+      MONGODB_URI = "mongodb://" + USR + ":" + PWD + "@" + \
+           HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
+    ```
+
+  * cloud
+
+    ```
+      Find URI under Database > Connect
+    ```
 
 * Run program
 
