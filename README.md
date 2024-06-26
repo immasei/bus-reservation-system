@@ -58,7 +58,7 @@
 * Run program
 
   ```
-  make
+    make
   ```
 
 ### Features
