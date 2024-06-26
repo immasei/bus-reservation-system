@@ -10,28 +10,28 @@ import os
 # https:stackoverflow.com/questions/45732838/authentication-failed-to-connect-to-mongodb-using-pymongo
 # https://www.mongodb.com/resources/languages/pymongo-tutorial
 
-# config = dotenv_values(".env")
-# USR = config['USR']
-# PWD = config['PWD']
-# HOST = config['HOST']
-# DBNAME = config['DB_NAME']
+config = dotenv_values(".env")
+USR = config['USR']
+PWD = config['PWD']
+HOST = config['HOST']
+DBNAME = config['DB_NAME']
 
 # localhost
 # MONGODB_URI = "mongodb://" + USR + ":" + PWD + "@" + \
 #           HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
 
 # cloud
-# MONGODB_URI = f'mongodb+srv://{USR}:{PWD}@{HOST}.vc6tdje.mongodb.net/'
+MONGODB_URI = f'mongodb+srv://{USR}:{PWD}@{HOST}.vc6tdje.mongodb.net/'
 
-MONGODB_URI = os.getenv("MONGODB_URI")
-DBNAME = os.getenv("DBNAME")
+# MONGODB_URI = os.getenv("MONGODB_URI")
+# DBNAME = os.getenv("DBNAME")
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @app.on_event("startup")
-async def startup_db_client():
+def startup_db_client():
     app.mongodb_client = MongoClient(MONGODB_URI)
     app.database = app.mongodb_client[DBNAME]
 
@@ -45,7 +45,7 @@ async def startup_db_client():
     # app.mongodb_client.drop_database(DBNAME)
 
 @app.on_event("shutdown")
-async def shutdown_db_client():
+def shutdown_db_client():
     app.mongodb_client.close()
 
 @app.get("/", response_class=HTMLResponse)
