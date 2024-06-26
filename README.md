@@ -3,7 +3,7 @@
 ### Table of Contents
 **[Tech Stack](#Tech-Stack)**<br>
 **[Execution](#Execution)**<br>
-**[Demo](#Features)**<br>
+**[Demo Features](#Features)**<br>
 **[References](#References)**<br>
 
 ### Tech-Stack
@@ -22,17 +22,13 @@
 
 * Startup MongoDB server
   
-  * localhost
-
-    ```
-      https://www.mongodb.com/docs/manual/administration/install-community/
-    ```
-
-  * cloud
+  ```
+    (localhost) https://www.mongodb.com/docs/manual/administration/install-community/
+  ```
     
-    ```
-      https://www.mongodb.com/products/platform/atlas-database
-    ```
+  ```
+    (cloud) https://www.mongodb.com/products/platform/atlas-database
+  ```
 
 * Dependencies Installation
   
@@ -58,18 +54,10 @@
 
 * Go to `main.py`, replace `MONGODB_URI`
 
-  * localhost
-
-    ```
-      MONGODB_URI = "mongodb://" + USR + ":" + PWD + "@" + \
-           HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
-    ```
-
-  * cloud
-
-    ```
-      Find URI under Database > Connect
-    ```
+  ```
+    (localhost) MONGODB_URI = "mongodb://" + USR + ":" + PWD + "@" + \
+         HOST + "/test_db?authSource=admin&retryWrites=true&w=majority"
+  ```
 
 * Run program
 
