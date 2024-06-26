@@ -10,12 +10,12 @@ import os
 # https:stackoverflow.com/questions/45732838/authentication-failed-to-connect-to-mongodb-using-pymongo
 # https://www.mongodb.com/resources/languages/pymongo-tutorial
 
-# config = dotenv_values(".env")
+config = dotenv_values(".env")
 
 # USR = config['USR']
 # PWD = config['PWD']
 # HOST = config['HOST']
-# DBNAME = config['DB_NAME']
+DBNAME = config['DB_NAME']
 
 # localhost
 # MONGODB_URI = "mongodb://" + USR + ":" + PWD + "@" + \
