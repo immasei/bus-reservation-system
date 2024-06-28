@@ -69,9 +69,9 @@
     
   * Connect to `Tour` or `Reservation` via navbar
  
- <p align='center'>
-  <img align='center' src='readme-resources/nav.gif' width='750'/>
- </p>
+   <p align='center'>
+    <img align='center' src='readme-resources/nav.gif' width='750'/>
+   </p>
 
 <br>
  
